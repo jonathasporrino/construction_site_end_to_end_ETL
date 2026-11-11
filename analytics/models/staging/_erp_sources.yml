@@ -1,0 +1,23 @@
+version: 1
+sources:
+  - name: erp
+    description: "Fictitious construction ERP (system of record), a DuckDB file attached read-only as erp_source."
+    database: erp_source
+    schema: erp
+    tables:
+      - name: empresa
+        description: "Table containing company information from the ERP system."
+      - name: plano_contas
+        description: "Table containing chart of accounts information from the ERP system."
+      - name: operacao
+        description: "Table containing operation information from the ERP system."
+      - name: obra
+        description: "Table containing project information from the ERP system."
+      - name: obra_socio
+        description: "Table containing project partner information from the ERP system."
+      - name: lancamento
+        description: "Table containing sales order data from the ERP system."
+        config:
+          loaded_at_field: updated_at
+          freshness:
+            warn_after: {count: 7, period: day}

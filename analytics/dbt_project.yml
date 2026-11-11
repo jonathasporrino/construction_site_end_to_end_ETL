@@ -1,0 +1,33 @@
+name: analytics
+
+profile: construction_pnl
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  construction_pnl:
+    +schema: seeds
+
+models:
+  construction_pnl:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table
+      +schema: marts
+      +post-hook: "{{ export_parquet() }}"
+
+snapshots:
+  construction_pnl:
+    +schema: snapshots

@@ -1,0 +1,53 @@
+==================== 2026-11-10T12:36:55.737698Z | 01a1c576-212e-7000-a2e1-cfa11c44987c ====================
+12:36:55.739632 [info ]: Installing dbt project and profile setup
+12:36:55.743860 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+12:36:55.744551 [info ]: Success Project created successfully!
+12:36:55.744573 [info ]: Info Project name: analytics
+12:36:55.744580 [info ]: Info Project directory: analytics
+12:38:00.615982 [error]: [IoError (dbt1001)]: Failed to get profile selection: IO error: read interrupted
+12:38:00.772766 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 error [1m 5s]
+==================== 2026-11-10T12:40:29.723708Z | 01a1c579-6507-7401-adb6-946743c543fe ====================
+12:40:29.725759 [info ]: Installing dbt project and profile setup
+12:40:29.732980 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+12:40:29.733846 [info ]: Success Project created successfully!
+12:40:29.734006 [info ]: Info Project name: analytics
+12:40:29.734044 [info ]: Info Project directory: analytics
+12:40:34.159228 [info ]: Info Using existing profile 'construction_pnl'
+12:40:34.159520 [info ]: Success Set profile 'construction_pnl' in dbt_project.yml
+12:40:34.159544 [info ]: Validating profile inputs, adapters, and connection
+
+12:40:34.159840 [info ]: dbt 2.0.9
+12:40:34.163278 [info ]: Started loading project
+12:40:34.178638 [info ]: Loading ~/.dbt/profiles.yml
+12:40:34.189801 [info ]: Finished loading project [  0.03s]
+12:40:34.192109 [info ]: Started debugging
+12:40:34.192418 [info ]: Debugging profile: dev
+12:40:34.192450 [info ]: Debugging dbt version: 2.0.9
+12:40:34.192466 [info ]: Debugging platform: macos aarch64 (unix)
+12:40:34.192665 [info ]: Debugging adapter type: duckdb (remote)
+12:40:34.204163 [info ]: Debugging dependencies:
+  git: OK
+12:40:34.205592 [info ]: Debugging connection:
+  "path": "warehouse.duckdb",
+  "schema": "dev",
+  "attach": [
+    {
+      "path": "../construtora_data/output/erp_source.duckdb",
+      "alias": "erp_source"
+    }
+  ]
+12:40:34.305560 [info ]: Debugging connection test: ERROR
+12:40:34.305927 [info ]: Finished debugging [  0.11s]
+12:40:34.306411 [error]: [AuthenticationFailed (dbt1011)]: dbt was unable to connect to the database configured for the `duckdb` adapter.
+The following error was returned:
+
+DuckDB init SQL statement 1 failed: InvalidArguments: IO Error: Cannot open file "/Users/jonathasporrino/Library/CloudStorage/GoogleDrive-jonathas.porrino@gmail.com/Meu Drive/Projetos/Portifolio/Construtora/bases/construtora/construtora_data/construtora_data/output/erp_source.duckdb": No such file or directory (sqlstate: [0, 0, 0, 0, 0], vendor_code: -2147483648)
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles
+12:40:35.156843 [info ]: New version available 2.0.11 (run `dbt system update`)
+12:40:35.315234 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 error for target 'dev' [5.6s]

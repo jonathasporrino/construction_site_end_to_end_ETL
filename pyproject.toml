@@ -1,0 +1,22 @@
+[project]
+name = "construtora-data"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jonathas Porrino", email = "jonathas.porrino@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "dbt>=2.0.11",
+    "duckdb==2.0.0",
+    "openpyxl==3.1.5",
+    "xlwt==1.3.0",
+]
+
+[project.scripts]
+construtora-data = "construtora_data:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"

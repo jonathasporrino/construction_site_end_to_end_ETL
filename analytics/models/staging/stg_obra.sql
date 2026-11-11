@@ -1,0 +1,20 @@
+select
+    numero as numero_obra,
+    descricao as descricao_obra,
+    tipo_cliente,
+    grupo,
+    unidade_negocio,
+    controle,
+    gerente,
+    uf,
+    cliente,
+    tipo as tipo_obra,
+    pct_empresa_parceira,
+    valor_contrato,
+    pct_fisico as pct_fisico_executado,
+    credito_inss,
+    contas_inss,
+    dt_inicio,
+    dt_fim,
+    ativo as is_ativa
+from {{ source('erp', 'obra')}}
