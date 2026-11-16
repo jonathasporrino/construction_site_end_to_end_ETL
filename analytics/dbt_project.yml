@@ -13,11 +13,11 @@ clean-targets:
   - "dbt_packages"
 
 seeds:
-  construction_pnl:
+  analytics:
     +schema: seeds
 
 models:
-  construction_pnl:
+  analytics::
     staging:
       +materialized: view
       +schema: staging
@@ -29,5 +29,5 @@ models:
       +post-hook: "{{ export_parquet() }}"
 
 snapshots:
-  construction_pnl:
+  analytics::
     +schema: snapshots

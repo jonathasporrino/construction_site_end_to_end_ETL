@@ -1,0 +1,12 @@
+op_codigo,categoria,descricao_categoria
+510,RECEITA_SOCIO,Revenue received on behalf of a partner
+511,RECEBIMENTO_FATURA,Client invoice receipt
+520,PAGAMENTO,Supplier or partner payment
+610,IMPOSTO,Tax payment
+615,RETENCAO_INSS,INSS withheld on invoice
+723,APORTE,Partner capital contribution
+735,APORTE,Partner capital contribution
+736,APORTE,Partner capital contribution
+748,APORTE,Partner capital contribution
+733,TRANSFERENCIA_IMPOSTO,Tax transfer to a partner (partner in RAZAO)
+823,TRANSFERENCIA_RECEITA,Revenue transfer from a partner (partner in RAZAO)

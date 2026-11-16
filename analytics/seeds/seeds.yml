@@ -1,0 +1,26 @@
+version: 1
+seeds:
+  - name: categoria_operacao
+    description: Business category of each ERP operation code (replaces hard-coded OP lists in DAX).
+    config:
+      column_types: {op_codigo: integer}
+    columns:
+      - name: op_codigo
+        data_tests: [unique, not_null]
+      - name: categoria
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [RECEITA_SOCIO, RECEBIMENTO_FATURA, PAGAMENTO, IMPOSTO, RETENCAO_INSS, APORTE, TRANSFERENCIA_RECEITA, TRANSFERENCIA_IMPOSTO]
+  - name: plano_contas_grupo
+    description: Chart-of-accounts groups (levels 1-3) used to build the account hierarchy.
+    config:
+      column_types: {codigo_grupo: text, nivel: integer}
+    columns:
+      - name: codigo_grupo
+        data_tests: [unique, not_null]
+  - name: acesso_usuario
+    description: Who may see which business unit in Power BI (fictitious e-mails).
+    columns:
+      - name: email
+        data_tests: [not_null]
