@@ -91,7 +91,7 @@ models:
       - name: operacao_key
         data_tests: [unique, not_null]
   - name: dim_date
-    description: Calendar 2022-2027, pt-BR labels.
+    description: Calendar 2022-2030, pt-BR labels.
     columns:
       - name: date_key
         data_tests: [unique, not_null]

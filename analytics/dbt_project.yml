@@ -17,7 +17,7 @@ seeds:
     +schema: seeds
 
 models:
-  analytics::
+  analytics:
     staging:
       +materialized: view
       +schema: staging
@@ -29,7 +29,7 @@ models:
       +post-hook: "{{ export_parquet() }}"
 
 snapshots:
-  analytics::
+  analytics:
     +schema: snapshots
 
 vars:
