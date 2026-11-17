@@ -6,7 +6,7 @@ select
 from 
     {{ ref('stg_operacao') }} as o
 left join
-    {{ ref('categoria_operacao')}} as o
+    {{ ref('categoria_operacao')}} as c
         on c.op_codigo = o.op_codigo
 
 union all

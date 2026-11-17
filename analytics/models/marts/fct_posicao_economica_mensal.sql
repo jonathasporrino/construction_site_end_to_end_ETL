@@ -3,7 +3,7 @@
         materialized='incremental',
         unique_key=['mes_referencia', 'obra_key', 'conta_key'],
         incremental_strategy='merge',
-        on_schema_change='fail'
+        on_schema_change='append_new_columns'
     )
 }}
 {#-

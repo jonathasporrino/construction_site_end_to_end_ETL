@@ -3,7 +3,7 @@
         materialized='incremental',
         unique_key='lancamento_id',
         incremental_strategy='merge',
-        on_schema_change='fail'
+        on_schema_change='append_new_columns'
     )
 }}
 -- Grain: one financial document installment. Amounts are positive; dim_conta.natureza gives the sign.
@@ -61,6 +61,6 @@ where l.updated_at > (select
                         '{{ var("incremental_lookback_days") }} days'
                         from {{ this }})
   {%  if var('reprocess_from_month') %}
-  or l.dt_competencia >= date '{{ var("reprocess_from_month") }}  
+  or l.dt_competencia >= date '{{ var("reprocess_from_month") }}'
   {% endif %}
 {% endif %}

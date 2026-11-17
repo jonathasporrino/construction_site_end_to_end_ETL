@@ -4,7 +4,7 @@ select
     razao_social,
     cnpj,
     tipo_empresa
-from {{ ref('stg_empresa)}}
+from {{ ref('stg_empresa')}}
 
 union all
 
