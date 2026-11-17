@@ -1,0 +1,148 @@
+table dCalendario
+	lineageTag: 8dee9448-0d26-4b0d-8115-dbdbe2599eb6
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 61d22687-d2f0-4429-8c10-3f70e8eb5aa6
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 889f0d22-21fc-44bb-8a1a-20ace4dd74a4
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Num'
+		dataType: int64
+		formatString: 0
+		lineageTag: 57f3da2c-6079-43be-8c87-f21468d827a6
+		summarizeBy: none
+		sourceColumn: Mes Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Nome'
+		dataType: string
+		lineageTag: 3badb082-e750-444c-87a6-0e248a374c06
+		summarizeBy: none
+		sourceColumn: Mes Nome
+		sortByColumn: 'Mes Num'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d6e5306-64cb-4b5a-80ee-57abe7f6f8ae
+		summarizeBy: none
+		sourceColumn: Trimestre
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnoMes
+		dataType: int64
+		formatString: 0
+		lineageTag: d1ae899e-599f-4e5a-9526-ffa88c9673ec
+		summarizeBy: none
+		sourceColumn: AnoMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Semana do Ano'
+		dataType: int64
+		formatString: 0
+		lineageTag: f03db53f-4c67-494e-943a-1df1a47f2688
+		summarizeBy: none
+		sourceColumn: Semana do Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dia da Semana'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9dc9104b-7951-44ab-a743-494ffa0b80a4
+		summarizeBy: none
+		sourceColumn: Dia da Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nome do Dia'
+		dataType: string
+		lineageTag: 08d76fc1-b6bf-40e1-8fa7-e0f5d25e6b43
+		summarizeBy: none
+		sourceColumn: Nome do Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		lineageTag: 8e1de952-bf81-4fc0-94bf-64e90c5e1103
+		summarizeBy: none
+		sourceColumn: MesAno
+		sortByColumn: AnoMes
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = m
+		mode: import
+		source = ```
+				let
+				// 1. configuration: Change 'BD EFETUADO' to your actual Fact Table name
+				    Source = #"fct_gerencial",
+				    
+				    // 2. Identify the range of dates dynamically
+				    ColDate = Source[DT.Competencia], 
+				    MinDate = List.Min(ColDate),
+				    MaxDate = List.Max(ColDate),
+				
+				    // 3. Set Start to Jan 1st of the first year, and End to Dec 31st of the last year
+				    StartDate = #date(Date.Year(MinDate), 1, 1),
+				    EndDate = #date(Date.Year(MaxDate), 12, 31),
+				    
+				    // 4. Create the list of dates
+				    Duration = Duration.Days(EndDate - StartDate) + 1,
+				    ListDates = List.Dates(StartDate, Duration, #duration(1, 0, 0, 0)),
+				    
+				    // 5. Convert to Table
+				    #"Converted to Table" = Table.FromList(ListDates, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+				
+				    // 6. Add Calendar Columns (Best Practices)
+				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "Ano", each Date.Year([Date]), Int64.Type),
+				    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Mes Num", each Date.Month([Date]), Int64.Type),
+				    #"Inserted Month Name" = Table.AddColumn(#"Inserted Month", "Mes Nome", each Date.ToText([Date], "MMM", "pt-BR"), type text), // Short Name (Jan, Fev)
+				    #"Inserted Quarter" = Table.AddColumn(#"Inserted Month Name", "Trimestre", each Date.QuarterOfYear([Date]), Int64.Type),
+				    #"Inserted YearMonth" = Table.AddColumn(#"Inserted Quarter", "AnoMes", each [Ano] * 100 + [Mes Num], Int64.Type),
+				    #"Inserted MonthYear" = Table.AddColumn(#"Inserted YearMonth", "MesAno", each Date.ToText(#date([Ano], [Mes Num], 1), "MM/yyyy"), type text), // Sort Key (e.g. 202401)
+				    
+				    // 7. Add Week and Day info (Optional but recommended)
+				    #"Inserted Week" = Table.AddColumn(#"Inserted MonthYear", "Semana do Ano", each Date.WeekOfYear([Date]), Int64.Type),
+				    #"Inserted DayWeek" = Table.AddColumn(#"Inserted Week", "Dia da Semana", each Date.DayOfWeek([Date]), Int64.Type),
+				    #"Inserted DayName" = Table.AddColumn(#"Inserted DayWeek", "Nome do Dia", each Date.ToText([Date], "dddd", "pt-BR"), type text),
+				    
+				    // 8. Capitalize First Letters of names
+				    #"Capitalized" = Table.TransformColumns(#"Inserted DayName",{{"Mes Nome", Text.Proper, type text}, {"Nome do Dia", Text.Proper, type text}})
+				in
+				    #"Capitalized"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

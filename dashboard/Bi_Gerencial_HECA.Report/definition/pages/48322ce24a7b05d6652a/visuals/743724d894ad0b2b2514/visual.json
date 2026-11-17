@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "743724d894ad0b2b2514",
+  "position": {
+    "x": 221.05396685067396,
+    "y": 72.618179327708617,
+    "z": 12000,
+    "height": 59.489705599384259,
+    "width": 215.45827981835447,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CLASSIFICAÇÃO DAS OBRAS"
+                    }
+                  },
+                  "Property": "UNIDADE DE NEGÓCIO"
+                }
+              },
+              "queryRef": "CLASSIFICAÇÃO DAS OBRAS.UNIDADE DE NEGÓCIO",
+              "nativeQueryRef": "UNIDADE DE NEGÓCIO1",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "6bee0fafedb9d80d081c"
+}

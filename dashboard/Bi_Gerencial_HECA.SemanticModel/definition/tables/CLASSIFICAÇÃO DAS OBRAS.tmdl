@@ -1,0 +1,222 @@
+table 'CLASSIFICAÇÃO DAS OBRAS'
+	lineageTag: d75c3bf8-7805-4b33-8667-022474e6781c
+
+	column 'TIPO CLIENTE'
+		dataType: string
+		lineageTag: 5b053c96-35ae-4e0a-be81-09b9371570b4
+		summarizeBy: none
+		sourceColumn: TIPO CLIENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column GRUPO
+		dataType: string
+		lineageTag: c661f410-6c54-40da-a7ef-cbe9b858215a
+		summarizeBy: none
+		sourceColumn: GRUPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column NÚMERO
+		dataType: string
+		lineageTag: 73c9ae92-9c11-44b2-9659-64e322c75def
+		summarizeBy: none
+		sourceColumn: NÚMERO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UNIDADE DE NEGÓCIO'
+		dataType: string
+		lineageTag: 7dbe14e6-93db-427d-80c0-1502a3a5a2b5
+		summarizeBy: none
+		sourceColumn: UNIDADE DE NEGÓCIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CENTROS DE CUSTOS'
+		dataType: string
+		lineageTag: cb4c07c2-480a-47db-99ba-20e94ad3ddde
+		summarizeBy: none
+		sourceColumn: CENTROS DE CUSTOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTROLE
+		dataType: string
+		lineageTag: ce36e59e-ae45-425f-9cb1-9cdf1b5a39c9
+		summarizeBy: none
+		sourceColumn: CONTROLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UN/ Gerencia'
+		dataType: string
+		lineageTag: b1e12c00-2c9f-4f61-b87b-3abf27edcc7d
+		summarizeBy: none
+		sourceColumn: UN/ Gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: d2ea1d5c-f7f9-43cc-befb-6d14357cbdae
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cliente
+		dataType: string
+		lineageTag: c9b41882-7188-472b-9f55-24e17532c042
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% HECA -URBANE'
+		dataType: string
+		lineageTag: 0d61e8fe-8e57-49a5-8f28-0ae020ad0c9d
+		summarizeBy: none
+		sourceColumn: % HECA -URBANE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TIPO '
+		dataType: string
+		lineageTag: 1701de63-3f4d-4443-b3ab-200241934b94
+		summarizeBy: none
+		sourceColumn: "TIPO "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR ATUAL DO CONTRATO'
+		dataType: string
+		lineageTag: 2187cbde-4206-4e20-98a8-2643fee2bedf
+		summarizeBy: none
+		sourceColumn: VALOR ATUAL DO CONTRATO
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% FÍSICO EXECUTADO'
+		dataType: string
+		lineageTag: 263b71aa-910b-47d8-9620-ab938a3455c0
+		summarizeBy: none
+		sourceColumn: % FÍSICO EXECUTADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CRÉDITO DE INSS'
+		dataType: string
+		lineageTag: aeafacbe-71e3-4b64-a8a4-0cf64accdcc3
+		summarizeBy: none
+		sourceColumn: CRÉDITO DE INSS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CONTA INSS 01'
+		dataType: string
+		lineageTag: 0e3398ed-8a3f-4a0d-861d-d71420911f1b
+		summarizeBy: none
+		sourceColumn: CONTA INSS 01
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CONTA INSS 02'
+		dataType: string
+		lineageTag: 1ebd0b89-12f0-4891-a6c5-9188ad5663a8
+		summarizeBy: none
+		sourceColumn: CONTA INSS 02
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CONTA INSS 03'
+		dataType: string
+		lineageTag: 165399d2-f83c-48fe-873f-d5631d7cfc1a
+		summarizeBy: none
+		sourceColumn: CONTA INSS 03
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ID Socio'
+		dataType: string
+		lineageTag: c44ddc4f-632b-4b6f-92a1-4c53e8590564
+		summarizeBy: none
+		sourceColumn: ID Socio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 6d542e50-0051-425a-a5c4-94e66b4fe16b
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% Particiapação Societária'
+		dataType: string
+		lineageTag: 62e56e79-dc31-4c6d-9948-61f70deb1903
+		summarizeBy: none
+		sourceColumn: % Particiapação Societária
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% TAC'
+		dataType: double
+		formatString: 0.000
+		lineageTag: c0be0ed6-8a0f-4199-bd0f-65388fa5071b
+		summarizeBy: sum
+		sourceColumn: % TAC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e6ea4f8-8756-4305-884b-f69eda65b0e7
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CLASSIFICAÇÃO DAS OBRAS' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("G:\Meu Drive\Info_enterprise\externo\HECA\Projeto_HECA\2026.01.20_Classificação das Obras.xlsx"), null, true),
+				    #"Classif. Obras_Sheet" = Source{[Item="Classif. Obras",Kind="Sheet"]}[Data],
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Classif. Obras_Sheet",{{"Column1", type any}, {"Column2", type text}, {"Column3", type any}, {"Column4", type any}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type any}, {"Column12", type text}, {"Column13", type any}, {"Column14", type any}, {"Column15", type any}, {"Column16", type any}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}, {"Column20", type any}, {"Column21", type text}, {"Column22", type any}, {"Column23", type any}, {"Column24", type any}, {"Column25", type any}, {"Column26", type any}, {"Column27", type text}, {"Column28", type any}, {"Column29", type text}, {"Column30", type text}, {"Column31", type any}, {"Column32", type any}, {"Column33", type text}, {"Column34", type any}, {"Column35", type text}, {"Column36", type text}, {"Column37", type any}, {"Column38", type text}, {"Column39", type text}, {"Column40", type any}, {"Column41", type any}, {"Column42", type any}, {"Column43", type any}, {"Column44", type any}, {"Column45", type any}, {"Column46", type any}, {"Column47", type text}, {"Column48", type text}, {"Column49", type any}, {"Column50", type any}, {"Column51", type text}, {"Column52", type any}, {"Column53", type text}, {"Column54", type text}, {"Column55", type any}, {"Column56", type text}, {"Column57", type text}, {"Column58", type any}, {"Column59", type text}, {"Column60", type text}, {"Column61", type any}, {"Column62", type text}, {"Column63", type text}, {"Column64", type any}, {"Column65", type text}, {"Column66", type text}, {"Column67", type any}, {"Column68", type text}, {"Column69", type text}, {"Column70", type any}, {"Column71", type text}, {"Column72", type text}, {"Column73", type any}, {"Column74", type any}, {"Column75", type text}, {"Column76", type any}, {"Column77", type any}, {"Column78", type any}, {"Column79", type any}, {"Column80", type any}, {"Column81", type text}, {"Column82", type any}, {"Column83", type text}, {"Column84", type text}, {"Column85", type any}, {"Column86", type any}, {"Column87", type text}, {"Column88", type text}, {"Column89", type text}, {"Column90", type text}, {"Column91", type any}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type3",2),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Removed Top Rows1" = Table.Skip(#"Promoted Headers",1),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Top Rows1",{"Column1", "Column91"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns","JALMIIR","JALMIR",Replacer.ReplaceText,{"UN/ Gerencia"}),
+				    #"Added Index" = Table.AddIndexColumn(#"Replaced Value", "Index", 0, 1, Int64.Type),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Index", each ([NÚMERO] <> null)),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Filtered Rows",null,0,Replacer.ReplaceValue,{"Sócio 1 - % Particiapação Societária", "Sócio 1 - % TAC", "Sócio 2 - % Particiapação Societária", "Sócio 2 - % TAC", "Sócio 3 - % Particiapação Societária", "Sócio 3 - % TAC", "Sócio 4 - % Particiapação Societária", "Sócio 4 - % TAC", "Sócio 5 - % Particiapação Societária", "Sócio 5 - % TAC", "Sócio 6 - % Particiapação Societária", "Sócio 6 - % TAC", "Sócio 7 - % Particiapação Societária", "Sócio 7 - % TAC", "Sócio 8 - % Particiapação Societária", "Sócio 8 - % TAC", "Sócio 9 - % Particiapação Societária", "Sócio 9 - % TAC", "Sócio 10 - % Particiapação Societária", "Sócio 10 - % TAC", "Sócio 11 - % Particiapação Societária", "Sócio 11 - % TAC", "Sócio 12 - % Particiapação Societária", "Sócio 12 - % TAC", "Sócio 13 - % Particiapação Societária", "Sócio 13 - % TAC", "Sócio 14 - % Particiapação Societária", "Sócio 14 - % TAC", "Sócio 15 - % Particiapação Societária", "Sócio 15 - % TAC", "Sócio 16 - % Particiapação Societária", "Sócio 16 - % TAC", "Sócio 17 - % Particiapação Societária", "Sócio 17 - % TAC", "Sócio 18 - % Particiapação Societária", "Sócio 18 - % TAC", "Sócio 19 - % Particiapação Societária", "Sócio 19 - % TAC", "Sócio 20 - % Particiapação Societária", "Sócio 20 - % TAC", "Sócio 21 - % Particiapação Societária", "Sócio 21 - % TAC", "Sócio 22 - % Particiapação Societária", "Sócio 22 - % TAC", "Sócio 23 - % Particiapação Societária", "Sócio 23 - % TAC", "Sócio 24 - % Particiapação Societária", "Sócio 24 - % TAC"}),
+				    #"Filled Down" = Table.FillDown(#"Replaced Value2",{"Sócio 1 - Descrição", "Sócio 2 - Descrição", "Sócio 3 - Descrição", "Sócio 4 - Descrição", "Sócio 5 - Descrição", "Sócio 6 - Descrição", "Sócio 7 - Descrição", "Sócio 8 - Descrição", "Sócio 9 - Descrição", "Sócio 10 - Descrição", "Sócio 11 - Descrição", "Sócio 12 - Descrição", "Sócio 13 - Descrição", "Sócio 14 - Descrição", "Sócio 15 - Descrição", "Sócio 16 - Descrição", "Sócio 17 - Descrição", "Sócio 18 - Descrição", "Sócio 19 - Descrição", "Sócio 20 - Descrição", "Sócio 21 - Descrição", "Sócio 22 - Descrição", "Sócio 23 - Descrição", "Sócio 24 - Descrição"}),
+				    #"Filled Up" = Table.FillUp(#"Filled Down",{"Sócio 1 - Descrição", "Sócio 2 - Descrição", "Sócio 3 - Descrição", "Sócio 4 - Descrição", "Sócio 5 - Descrição", "Sócio 6 - Descrição", "Sócio 7 - Descrição", "Sócio 8 - Descrição", "Sócio 9 - Descrição", "Sócio 10 - Descrição", "Sócio 11 - Descrição", "Sócio 12 - Descrição", "Sócio 13 - Descrição", "Sócio 14 - Descrição", "Sócio 15 - Descrição", "Sócio 16 - Descrição", "Sócio 17 - Descrição", "Sócio 18 - Descrição", "Sócio 19 - Descrição", "Sócio 20 - Descrição", "Sócio 21 - Descrição", "Sócio 22 - Descrição", "Sócio 23 - Descrição", "Sócio 24 - Descrição"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Filled Up",null,"NAO CADASTRADO",Replacer.ReplaceValue,{"TIPO CLIENTE", "UNIDADE DE NEGÓCIO", "UN/ Gerencia", "Cliente", "TIPO "}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value1",null,0,Replacer.ReplaceValue,{"VALOR ATUAL DO CONTRATO", "% FÍSICO EXECUTADO"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value4",null,"-",Replacer.ReplaceValue,{"CONTA INSS 01"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value3",null,"-",Replacer.ReplaceValue,{"CONTA INSS 02"}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Replaced Value6",null,"-",Replacer.ReplaceValue,{"CONTA INSS 03"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value7",null,"-",Replacer.ReplaceValue,{"% HECA -#(lf)URBANE"}),
+				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value5",null,"-",Replacer.ReplaceValue,{"CRÉDITO DE INSS"}),
+				    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8",null,"-",Replacer.ReplaceValue,{"CONTROLE"}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Replaced Value9", {"TIPO CLIENTE", "GRUPO", "NÚMERO", "UNIDADE DE NEGÓCIO", "CENTROS DE CUSTOS", "CONTROLE", "UN/ Gerencia", "UF", "Cliente", "% HECA -#(lf)URBANE", "TIPO ", "VALOR ATUAL DO CONTRATO", "% FÍSICO EXECUTADO", "CRÉDITO DE INSS", "CONTA INSS 01", "CONTA INSS 02", "CONTA INSS 03", "Index"}, "Attribute", "Value"),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Unpivoted Columns", "Text Before Delimiter", each Text.BeforeDelimiter([Attribute], " ", 1), type text),
+				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Inserted Text Before Delimiter", "Text After Delimiter", each Text.AfterDelimiter([Attribute], "- "), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text After Delimiter",{{"Text Before Delimiter", "ID Socio"}, {"Text After Delimiter", "Tipo Informação"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"TIPO CLIENTE", "GRUPO", "NÚMERO", "UNIDADE DE NEGÓCIO", "CENTROS DE CUSTOS", "CONTROLE", "UN/ Gerencia", "UF", "Cliente", "% HECA -#(lf)URBANE", "TIPO ", "VALOR ATUAL DO CONTRATO", "% FÍSICO EXECUTADO", "CRÉDITO DE INSS", "CONTA INSS 01", "CONTA INSS 02", "CONTA INSS 03", "Index", "Attribute", "ID Socio", "Tipo Informação", "Value"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"Attribute"}),
+				    #"Pivoted Column" = Table.Pivot(#"Removed Columns1", List.Distinct(#"Removed Columns1"[#"Tipo Informação"]), "Tipo Informação", "Value"),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Pivoted Column",{{"% TAC", Percentage.Type}, {"NÚMERO", type text}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Changed Type2", each ([NÚMERO] <> "1" and [NÚMERO] <> "100" and [NÚMERO] <> "101" and [NÚMERO] <> "102" and [NÚMERO] <> "103" and [NÚMERO] <> "104" and [NÚMERO] <> "105" and [NÚMERO] <> "106" and [NÚMERO] <> "107" and [NÚMERO] <> "108" and [NÚMERO] <> "109" and [NÚMERO] <> "110" and [NÚMERO] <> "111" and [NÚMERO] <> "112" and [NÚMERO] <> "113" and [NÚMERO] <> "114" and [NÚMERO] <> "115" and [NÚMERO] <> "116" and [NÚMERO] <> "117" and [NÚMERO] <> "118" and [NÚMERO] <> "119" and [NÚMERO] <> "120" and [NÚMERO] <> "121" and [NÚMERO] <> "122" and [NÚMERO] <> "123" and [NÚMERO] <> "124" and [NÚMERO] <> "125" and [NÚMERO] <> "126" and [NÚMERO] <> "127" and [NÚMERO] <> "128" and [NÚMERO] <> "129" and [NÚMERO] <> "130" and [NÚMERO] <> "131" and [NÚMERO] <> "132" and [NÚMERO] <> "133" and [NÚMERO] <> "134" and [NÚMERO] <> "135" and [NÚMERO] <> "136" and [NÚMERO] <> "137" and [NÚMERO] <> "138" and [NÚMERO] <> "140" and [NÚMERO] <> "141" and [NÚMERO] <> "142" and [NÚMERO] <> "143" and [NÚMERO] <> "144" and [NÚMERO] <> "145" and [NÚMERO] <> "146" and [NÚMERO] <> "147" and [NÚMERO] <> "148" and [NÚMERO] <> "149" and [NÚMERO] <> "150" and [NÚMERO] <> "151" and [NÚMERO] <> "152" and [NÚMERO] <> "153" and [NÚMERO] <> "154" and [NÚMERO] <> "156" and [NÚMERO] <> "157" and [NÚMERO] <> "158" and [NÚMERO] <> "159" and [NÚMERO] <> "160" and [NÚMERO] <> "161" and [NÚMERO] <> "162" and [NÚMERO] <> "163" and [NÚMERO] <> "164" and [NÚMERO] <> "165" and [NÚMERO] <> "166" and [NÚMERO] <> "167" and [NÚMERO] <> "168" and [NÚMERO] <> "169" and [NÚMERO] <> "170" and [NÚMERO] <> "171" and [NÚMERO] <> "172" and [NÚMERO] <> "173" and [NÚMERO] <> "174" and [NÚMERO] <> "176" and [NÚMERO] <> "177" and [NÚMERO] <> "178" and [NÚMERO] <> "179"))
+				in
+				    #"Filtered Rows1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

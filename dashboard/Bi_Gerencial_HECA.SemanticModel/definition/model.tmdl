@@ -1,0 +1,41 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Lista de Plano de Contas","BD COMPROMISSADO","BD EFETUADO","dCalendario","fct_gerencial","_Medidas","Gerencia","BD COMPROMISSADO (2)","BD EFETUADO (2)","dim_socio","_SELECT_RZ_SELECT_FIRST_1_LISTAEMPREGRUPO_EMPREGRUPO_FROM_S_CTB__202601131620_da","CLASSIFICAÇÃO DAS OBRAS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_8ea03162-e792-49c5-ba33-d957f212ea0e
+ref table 'Lista de Plano de Contas'
+ref table dCalendario
+ref table fct_gerencial
+ref table LocalDateTable_42a1e5f2-ffab-4a0f-92cb-a67d1f1dce4a
+ref table LocalDateTable_dad1b4e8-fd15-4018-a76c-1afc4724bd91
+ref table LocalDateTable_0351dafe-aacd-4e0c-a9e5-c39d359fd2cb
+ref table LocalDateTable_d53f33f7-19bd-40fd-aa55-5610649f9cb2
+ref table LocalDateTable_712dcbb2-ac4b-423c-b34c-655962829e26
+ref table _Medidas
+ref table Gerencia
+ref table Dim_CLS_Obras_Ponte
+ref table dPlanoContas
+ref table LocalDateTable_ed8ccfdc-fb48-42f3-8b9f-f0153ec94ac6
+ref table dim_socio
+ref table LocalDateTable_5109edf1-f9c1-4e54-9c44-ebb95b3cdb7f
+ref table LocalDateTable_dc226269-5d3a-4f72-9e87-6a0ca2b1f51b
+ref table LocalDateTable_b8eec3fa-f793-4c5a-985d-4d58d375e77d
+ref table LocalDateTable_164a7229-c3af-4e15-9cdf-c822653e85d4
+ref table LocalDateTable_d43204f2-0682-4ab7-8799-b92580946b45
+ref table LocalDateTable_a0cab377-307e-4744-bdde-0d9828e31cf1
+ref table LocalDateTable_2ea10e5d-de4b-411e-9a9b-31fb330ba1e6
+ref table _SELECT_RZ_SELECT_FIRST_1_LISTAEMPREGRUPO_EMPREGRUPO_FROM_S_CTB__202601131620_da
+ref table 'CLASSIFICAÇÃO DAS OBRAS'
+
+ref cultureInfo en-US
+

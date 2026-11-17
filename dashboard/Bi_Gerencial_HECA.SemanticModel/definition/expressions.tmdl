@@ -1,0 +1,199 @@
+expression 'BD COMPROMISSADO' = ```
+		let
+		    // --- STEP 1: Get the Metadata (Date) and Content from the Folder ---
+		    FolderPath = "G:\Meu Drive\Info_enterprise\externo\HECA\",
+		    FileName = "Banco de Dados Gerencial - Set_2025.xlsx",
+		    
+		    // Connect to folder
+		    SourceFolder = Folder.Files(FolderPath),
+		    
+		    // Filter for the specific file
+		    FilteredRow = Table.SelectRows(SourceFolder, each [Name] = FileName),
+		    
+		    // Extract the "Date created" into a variable to use later
+		    SourceDateCreated = FilteredRow{0}[Date created],
+		    
+		    // Extract the Binary content to open the Excel file
+		    FileContent = FilteredRow{0}[Content],
+		
+		    // --- STEP 2: Open the Excel (Replaces your original "Source") ---
+		    Source = Excel.Workbook(FileContent, null, true),
+		    
+		    // --- STEP 3: Your Original Transformations ---
+		    #"BD COMPROMISSADO_Sheet" = Source{[Item="BD COMPROMISSADO",Kind="Sheet"]}[Data],
+		    #"Removed Columns" = Table.RemoveColumns(#"BD COMPROMISSADO_Sheet",{"Column1"}),
+		    #"Removed Top Rows" = Table.Skip(#"Removed Columns",8),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DT. RECTO", type date}, {"DT. #(lf)DOC", type date}, {"DT.#(lf)VENCORIG", type date}, {"DT.#(lf)MOVBANC", type date}, {"DT.#(lf)VENC", type date}, {"TOTATUALTXADMPREV", type number}, {"TOTATUALTXADMCOMP", type number}, {"TOTATUALTXADMEFETU", type number}, {"VALOR TOTAL EFETUADO", type number}, {"VALOR TOTAL PREVISTO", type number}, {"VALOR TOTAL COMP.", type number}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([CENTRO DE CUSTO] <> null)),
+		    #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each Text.StartsWith([PLANO DE CONTA], "1") or Text.StartsWith([PLANO DE CONTA], "2")),
+		    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows1",".","",Replacer.ReplaceText,{"PLANO DE CONTA"}),
+		    #"Ajuste de coluna" = Table.AddColumn(#"Replaced Value", "Receita/Despesa", each if [PLANO DE CONTA] = "1001020001" then "Receita" else if [PLANO DE CONTA] = "1001020002" then "Receita" else if [PLANO DE CONTA] = "1001020003" then "Receita" else if [PLANO DE CONTA] = "1001030004" then "Receita" else if [PLANO DE CONTA] = "1001030005" then "Receita" else if [PLANO DE CONTA] = "1001020004" then "Receita" else if [PLANO DE CONTA] = "1001020005" then "Receita" else if [PLANO DE CONTA] = "1001020006" then "Receita" else if [PLANO DE CONTA] = "1001030001" then "Receita" else if [PLANO DE CONTA] = "1001030002" then "Receita" else if [PLANO DE CONTA] = "1001030003" then "Receita" else if [PLANO DE CONTA] = "1001030007" then "Receita" else if [PLANO DE CONTA] = "1001030008" then "Receita" else if [PLANO DE CONTA] = "1001040001" then "Receita" else if [PLANO DE CONTA] = "1001040002" then "Receita" else if [PLANO DE CONTA] = "1001040003" then "Receita" else if [PLANO DE CONTA] = "1004010001" then "Receita" else if [PLANO DE CONTA] = "1002010004" then "Receita" else if [PLANO DE CONTA] = "1004010002" then "Receita" else if [PLANO DE CONTA] = "1002010001" then "Receita" else if [PLANO DE CONTA] = "1001040004" then "Receita" else "Despesa"),
+		    #"Renamed Columns" = Table.RenameColumns(#"Ajuste de coluna",{{"DT.#(lf)MOVBANC", "DT.MOVBANC"}, {"FORNECEDOR", "FORNECEDOR/CLIENTE"}, {"DESCRIÇÃO DA EMPRESA", "EMPRESA RECBTO/PAGTO"}}),
+		    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "DT.#(lf)VENCORIG", "DT.#(lf)VENCORIG - Copy"),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"DT.#(lf)VENCORIG - Copy", "DT.Competencia"}}),
+		
+		    // --- STEP 4: Add the Date Created Column at the end ---
+		    #"Added File Date" = Table.AddColumn(#"Renamed Columns1", "Source File Date", each SourceDateCreated, type datetime),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added File Date",{{"Source File Date", "Data da Base"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns2", "ETAPAOBRA", each 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "REALIZADO_A_REALIZAR", each "A Realizar")
+		in
+		    #"Added Custom1"
+		```
+	lineageTag: db9a5e83-1f45-4944-b2d4-c9a21dbcf644
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'BD EFETUADO' = ```
+		let
+		    // --- STEP 1: Get the Metadata (Date) and Content from the Folder ---
+		    FolderPath = "G:\Meu Drive\Info_enterprise\externo\HECA\",
+		    FileName = "Banco de Dados Gerencial - Set_2025.xlsx",
+		    
+		    // Connect to folder
+		    SourceFolder = Folder.Files(FolderPath),
+		    
+		    // Filter for the specific file
+		    FilteredRow = Table.SelectRows(SourceFolder, each [Name] = FileName),
+		    
+		    // Extract the "Date created" into a variable
+		    SourceDateCreated = FilteredRow{0}[Date created],
+		    
+		    // Extract the Binary content to open the Excel file
+		    FileContent = FilteredRow{0}[Content],
+		
+		    // --- STEP 2: Open the Excel (Replaces your original "Source") ---
+		    Source = Excel.Workbook(FileContent, null, true),
+		
+		    // --- STEP 3: Your Original Transformations ---
+		    #"BD EFETUADO_Sheet" = Source{[Item="BD EFETUADO",Kind="Sheet"]}[Data],
+		    #"Removed Columns" = Table.RemoveColumns(#"BD EFETUADO_Sheet",{"Column1", "Column57", "Column58", "Column59", "Column60", "Column61", "Column62", "Column63", "Column64", "Column65", "Column66", "Column67", "Column68", "Column69", "Column70", "Column71", "Column72", "Column73", "Column20"}),
+		    #"Removed Top Rows" = Table.Skip(#"Removed Columns",13),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"VALOR TOTAL EFETUADO", type number}, {"VALOR TOTAL PREVISTO", type number}, {"VALOR TOTAL COMP.", type number}, {"DT. #(lf)DOC", type date}, {"DT. RECTO", type date}, {"DT.#(lf)VENC", type date}, {"DT.#(lf)VENCORIG", type date}, {"DT.#(lf)MOVBANC", type date}, {"TAC INTERNA", type number}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [#"DT.#(lf)MOVBANC"] <> null and [#"DT.#(lf)MOVBANC"] <> ""),
+		    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"DT.#(lf)MOVBANC", "DT.MOVBANC"}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns",".","",Replacer.ReplaceText,{"PLANO DE CONTA"}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Replaced Value",{"CENTRO DE CUSTO", "DESCRITIVO DO CENTRO DE CUSTO", "CNPJ FORNECEDOR", "FORNECEDOR/CLIENTE", "PLANO DE CONTA", "PLANO DE CONTA_1", "VALOR TOTAL EFETUADO", "VALOR TOTAL PREVISTO", "VALOR TOTAL COMP.",  "EMPRESA", "EMPRESA RECBTO/PAGTO", "NUMDOC", "DT. RECTO", "DT. #(lf)DOC", "DT.#(lf)VENC", "DT.#(lf)VENCORIG", "DT.MOVBANC", "HISTORICO", "OP.", "OP._2", "RI", "TOTATUALTXADMPREV", "TOTATUALTXADMCOMP", "TOTATUALTXADMEFETU", "APREC", "APSTATUS", "APCONTACDG", "APCONTA", "ARCONTACDG", "ARCONTA", "RIPEDIDOS", "ARREC", "ARSTATUS", "EMPREGRUPO", "EMPREGRUPODESC", "OBSERVAÇÃO","(+) RECEBIMENTO EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA", "TOTAL RECEBIDO EM CONTA INTERNA", "(+) RECEBIDO POR CONTA INTERNA A SER CONSIDERADO", "(+) 3.0 Suprimidos a considerar", "PAGAMENTOS", "(+) PAGOS EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA (OLD)", "(-) PAG. EM CONTA VÁLIDA ""S/ Mov. Bancária""", "TOTAL PAGOS EM CONTA INTERNA", "RECEBIMENTO", "TAC INTERNA", "LOCAÇÃO DE EQUIPAMENTOS PRÓPRIOS", "IMPOSTOS PAGOS COM CRÉDITO (INSS/ISS)", "(+) PAGOS POR CONTA INTERNA A SER CONSIDERADO", "(+) 4.0 Suprimidos a considerar", "RECEITA", "DESPESA"}),
+		    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"OBSERVAÇÃO", "(+) RECEBIMENTO EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA", "TOTAL RECEBIDO EM CONTA INTERNA", "(+) RECEBIDO POR CONTA INTERNA A SER CONSIDERADO", "(+) 3.0 Suprimidos a considerar", "PAGAMENTOS", "(+) PAGOS EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA (OLD)", "(-) PAG. EM CONTA VÁLIDA ""S/ Mov. Bancária""", "TOTAL PAGOS EM CONTA INTERNA", "RECEBIMENTO", "TAC INTERNA", "LOCAÇÃO DE EQUIPAMENTOS PRÓPRIOS", "IMPOSTOS PAGOS COM CRÉDITO (INSS/ISS)", "(+) PAGOS POR CONTA INTERNA A SER CONSIDERADO", "(+) 4.0 Suprimidos a considerar", "RECEITA", "DESPESA"}),
+		    #"Ajuste de Coluna" = Table.AddColumn(#"Removed Columns1", "Receita/Despesa", each if [PLANO DE CONTA] = "1001020001" then "Receita" else if [PLANO DE CONTA] = "1001020002" then "Receita" else if [PLANO DE CONTA] = "1001020003" then "Receita" else if [PLANO DE CONTA] = "1001030004" then "Receita" else if [PLANO DE CONTA] = "1001030005" then "Receita" else if [PLANO DE CONTA] = "1001020004" then "Receita" else if [PLANO DE CONTA] = "1001020005" then "Receita" else if [PLANO DE CONTA] = "1001020006" then "Receita" else if [PLANO DE CONTA] = "1001030001" then "Receita" else if [PLANO DE CONTA] = "1001030002" then "Receita" else if [PLANO DE CONTA] = "1001030003" then "Receita" else if [PLANO DE CONTA] = "1001030007" then "Receita" else if [PLANO DE CONTA] = "1001030008" then "Receita" else if [PLANO DE CONTA] = "1001040001" then "Receita" else if [PLANO DE CONTA] = "1001040002" then "Receita" else if [PLANO DE CONTA] = "1001040003" then "Receita" else if [PLANO DE CONTA] = "1004010001" then "Receita" else if [PLANO DE CONTA] = "1002010004" then "Receita" else if [PLANO DE CONTA] = "1004010002" then "Receita" else if [PLANO DE CONTA] = "1002010001" then "Receita" else if [PLANO DE CONTA] = "1001040004" then "Receita" else "Despesa"),
+		    #"Duplicated Column" = Table.DuplicateColumn(#"Ajuste de Coluna", "DT.MOVBANC", "DT.MOVBANC - Copy"),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"DT.MOVBANC - Copy", "DT.Competencia"}}),
+		    #"Filtered Rows1" = Table.SelectRows(#"Renamed Columns1", each Text.StartsWith([PLANO DE CONTA], "1") or Text.StartsWith([PLANO DE CONTA], "2")),
+		    
+		    // --- STEP 4: Add the Date Created Column at the end ---
+		    #"Added File Date" = Table.AddColumn(#"Filtered Rows1", "Source File Date", each SourceDateCreated, type datetime),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added File Date",{{"Source File Date", "Data da Base"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns2", "ETAPAOBRA", each 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "REALIZADO_A_REALIZAR", each "Realizado")
+		in
+		    #"Added Custom1"
+		```
+	lineageTag: 7fa43676-bc6d-43f0-a580-a4b9f2ce60ed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'BD COMPROMISSADO (2)' = ```
+		let
+		    // --- STEP 1: Get the Metadata (Date) and Content from the Folder ---
+		    FolderPath = "G:\Meu Drive\Info_enterprise\externo\HECA\",
+		    FileName = "Banco de Dados Gerencial - Set_2025.xlsx",
+		    
+		    // Connect to folder
+		    SourceFolder = Folder.Files(FolderPath),
+		    
+		    // Filter for the specific file
+		    FilteredRow = Table.SelectRows(SourceFolder, each [Name] = FileName),
+		    
+		    // Extract the "Date created" into a variable to use later
+		    SourceDateCreated = FilteredRow{0}[Date created],
+		    
+		    // Extract the Binary content to open the Excel file
+		    FileContent = FilteredRow{0}[Content],
+		
+		    // --- STEP 2: Open the Excel (Replaces your original "Source") ---
+		    Source = Excel.Workbook(FileContent, null, true),
+		    
+		    // --- STEP 3: Your Original Transformations ---
+		    #"BD COMPROMISSADO_Sheet" = Source{[Item="BD COMPROMISSADO",Kind="Sheet"]}[Data],
+		    #"Removed Columns" = Table.RemoveColumns(#"BD COMPROMISSADO_Sheet",{"Column1"}),
+		    #"Removed Top Rows" = Table.Skip(#"Removed Columns",8),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DT. RECTO", type date}, {"DT. #(lf)DOC", type date}, {"DT.#(lf)VENCORIG", type date}, {"DT.#(lf)MOVBANC", type date}, {"DT.#(lf)VENC", type date}, {"TOTATUALTXADMPREV", type number}, {"TOTATUALTXADMCOMP", type number}, {"TOTATUALTXADMEFETU", type number}, {"VALOR TOTAL EFETUADO", type number}, {"VALOR TOTAL PREVISTO", type number}, {"VALOR TOTAL COMP.", type number}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([CENTRO DE CUSTO] <> null)),
+		    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows",".","",Replacer.ReplaceText,{"PLANO DE CONTA"}),
+		    #"Ajuste de coluna" = Table.AddColumn(#"Replaced Value", "Receita/Despesa", each if [PLANO DE CONTA] = "1001020001" then "Receita" else if [PLANO DE CONTA] = "1001020002" then "Receita" else if [PLANO DE CONTA] = "1001020003" then "Receita" else if [PLANO DE CONTA] = "1001030004" then "Receita" else if [PLANO DE CONTA] = "1001030005" then "Receita" else if [PLANO DE CONTA] = "1001020004" then "Receita" else if [PLANO DE CONTA] = "1001020005" then "Receita" else if [PLANO DE CONTA] = "1001020006" then "Receita" else if [PLANO DE CONTA] = "1001030001" then "Receita" else if [PLANO DE CONTA] = "1001030002" then "Receita" else if [PLANO DE CONTA] = "1001030003" then "Receita" else if [PLANO DE CONTA] = "1001030007" then "Receita" else if [PLANO DE CONTA] = "1001030008" then "Receita" else if [PLANO DE CONTA] = "1001040001" then "Receita" else if [PLANO DE CONTA] = "1001040002" then "Receita" else if [PLANO DE CONTA] = "1001040003" then "Receita" else if [PLANO DE CONTA] = "1004010001" then "Receita" else if [PLANO DE CONTA] = "1002010004" then "Receita" else if [PLANO DE CONTA] = "1004010002" then "Receita" else if [PLANO DE CONTA] = "1002010001" then "Receita" else if [PLANO DE CONTA] = "1001040004" then "Receita" else "Despesa"),
+		    #"Renamed Columns" = Table.RenameColumns(#"Ajuste de coluna",{{"DT.#(lf)MOVBANC", "DT.MOVBANC"}, {"FORNECEDOR", "FORNECEDOR/CLIENTE"}, {"DESCRIÇÃO DA EMPRESA", "EMPRESA RECBTO/PAGTO"}}),
+		    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "DT.#(lf)VENCORIG", "DT.#(lf)VENCORIG - Copy"),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"DT.#(lf)VENCORIG - Copy", "DT.Competencia"}}),
+		
+		    // --- STEP 4: Add the Date Created Column at the end ---
+		    #"Added File Date" = Table.AddColumn(#"Renamed Columns1", "Source File Date", each SourceDateCreated, type datetime),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added File Date",{{"Source File Date", "Data da Base"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns2", "ETAPAOBRA", each 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "REALIZADO_A_REALIZAR", each "A Realizar"),
+		    #"Removed Columns1" = Table.RemoveColumns(#"Added Custom1",{"EMPREGRUPO"})
+		in
+		    #"Removed Columns1"
+		```
+	lineageTag: 0a2fb485-57c7-46d0-be34-f6b6a2047230
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'BD EFETUADO (2)' = ```
+		let
+		    // --- STEP 1: Get the Metadata (Date) and Content from the Folder ---
+		    FolderPath = "G:\Meu Drive\Info_enterprise\externo\HECA\",
+		    FileName = "Banco de Dados Gerencial - Set_2025.xlsx",
+		    
+		    // Connect to folder
+		    SourceFolder = Folder.Files(FolderPath),
+		    
+		    // Filter for the specific file
+		    FilteredRow = Table.SelectRows(SourceFolder, each [Name] = FileName),
+		    
+		    // Extract the "Date created" into a variable
+		    SourceDateCreated = FilteredRow{0}[Date created],
+		    
+		    // Extract the Binary content to open the Excel file
+		    FileContent = FilteredRow{0}[Content],
+		
+		    // --- STEP 2: Open the Excel (Replaces your original "Source") ---
+		    Source = Excel.Workbook(FileContent, null, true),
+		
+		    // --- STEP 3: Your Original Transformations ---
+		    #"BD EFETUADO_Sheet" = Source{[Item="BD EFETUADO",Kind="Sheet"]}[Data],
+		    #"Removed Columns" = Table.RemoveColumns(#"BD EFETUADO_Sheet",{"Column1", "Column57", "Column58", "Column59", "Column60", "Column61", "Column62", "Column63", "Column64", "Column65", "Column66", "Column67", "Column68", "Column69", "Column70", "Column71", "Column72", "Column73", "Column20"}),
+		    #"Removed Top Rows" = Table.Skip(#"Removed Columns",13),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"VALOR TOTAL EFETUADO", type number}, {"VALOR TOTAL PREVISTO", type number}, {"VALOR TOTAL COMP.", type number}, {"DT. #(lf)DOC", type date}, {"DT. RECTO", type date}, {"DT.#(lf)VENC", type date}, {"DT.#(lf)VENCORIG", type date}, {"DT.#(lf)MOVBANC", type date}, {"TAC INTERNA", type number}}),
+		    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [#"DT.#(lf)MOVBANC"] <> null and [#"DT.#(lf)MOVBANC"] <> ""),
+		    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"DT.#(lf)MOVBANC", "DT.MOVBANC"}}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns",".","",Replacer.ReplaceText,{"PLANO DE CONTA"}),
+		    #"Reordered Columns" = Table.ReorderColumns(#"Replaced Value",{"CENTRO DE CUSTO", "DESCRITIVO DO CENTRO DE CUSTO", "CNPJ FORNECEDOR", "FORNECEDOR/CLIENTE", "PLANO DE CONTA", "PLANO DE CONTA_1", "VALOR TOTAL EFETUADO", "VALOR TOTAL PREVISTO", "VALOR TOTAL COMP.",  "EMPRESA", "EMPRESA RECBTO/PAGTO", "NUMDOC", "DT. RECTO", "DT. #(lf)DOC", "DT.#(lf)VENC", "DT.#(lf)VENCORIG", "DT.MOVBANC", "HISTORICO", "OP.", "OP._2", "RI", "TOTATUALTXADMPREV", "TOTATUALTXADMCOMP", "TOTATUALTXADMEFETU", "APREC", "APSTATUS", "APCONTACDG", "APCONTA", "ARCONTACDG", "ARCONTA", "RIPEDIDOS", "ARREC", "ARSTATUS", "EMPREGRUPO", "EMPREGRUPODESC", "OBSERVAÇÃO","(+) RECEBIMENTO EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA", "TOTAL RECEBIDO EM CONTA INTERNA", "(+) RECEBIDO POR CONTA INTERNA A SER CONSIDERADO", "(+) 3.0 Suprimidos a considerar", "PAGAMENTOS", "(+) PAGOS EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA (OLD)", "(-) PAG. EM CONTA VÁLIDA ""S/ Mov. Bancária""", "TOTAL PAGOS EM CONTA INTERNA", "RECEBIMENTO", "TAC INTERNA", "LOCAÇÃO DE EQUIPAMENTOS PRÓPRIOS", "IMPOSTOS PAGOS COM CRÉDITO (INSS/ISS)", "(+) PAGOS POR CONTA INTERNA A SER CONSIDERADO", "(+) 4.0 Suprimidos a considerar", "RECEITA", "DESPESA"}),
+		    #"Removed Columns1" = Table.RemoveColumns(#"Reordered Columns",{"OBSERVAÇÃO", "(+) RECEBIMENTO EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA", "TOTAL RECEBIDO EM CONTA INTERNA", "(+) RECEBIDO POR CONTA INTERNA A SER CONSIDERADO", "(+) 3.0 Suprimidos a considerar", "PAGAMENTOS", "(+) PAGOS EM CONTA VÁLIDA", "(-) IMPOSTO RETIDO CONSIDERADO NA CONTA VÁLIDA (OLD)", "(-) PAG. EM CONTA VÁLIDA ""S/ Mov. Bancária""", "TOTAL PAGOS EM CONTA INTERNA", "RECEBIMENTO", "TAC INTERNA", "LOCAÇÃO DE EQUIPAMENTOS PRÓPRIOS", "IMPOSTOS PAGOS COM CRÉDITO (INSS/ISS)", "(+) PAGOS POR CONTA INTERNA A SER CONSIDERADO", "(+) 4.0 Suprimidos a considerar", "RECEITA", "DESPESA"}),
+		    #"Ajuste de Coluna" = Table.AddColumn(#"Removed Columns1", "Receita/Despesa", each if [PLANO DE CONTA] = "1001020001" then "Receita" else if [PLANO DE CONTA] = "1001020002" then "Receita" else if [PLANO DE CONTA] = "1001020003" then "Receita" else if [PLANO DE CONTA] = "1001030004" then "Receita" else if [PLANO DE CONTA] = "1001030005" then "Receita" else if [PLANO DE CONTA] = "1001020004" then "Receita" else if [PLANO DE CONTA] = "1001020005" then "Receita" else if [PLANO DE CONTA] = "1001020006" then "Receita" else if [PLANO DE CONTA] = "1001030001" then "Receita" else if [PLANO DE CONTA] = "1001030002" then "Receita" else if [PLANO DE CONTA] = "1001030003" then "Receita" else if [PLANO DE CONTA] = "1001030007" then "Receita" else if [PLANO DE CONTA] = "1001030008" then "Receita" else if [PLANO DE CONTA] = "1001040001" then "Receita" else if [PLANO DE CONTA] = "1001040002" then "Receita" else if [PLANO DE CONTA] = "1001040003" then "Receita" else if [PLANO DE CONTA] = "1004010001" then "Receita" else if [PLANO DE CONTA] = "1002010004" then "Receita" else if [PLANO DE CONTA] = "1004010002" then "Receita" else if [PLANO DE CONTA] = "1002010001" then "Receita" else if [PLANO DE CONTA] = "1001040004" then "Receita" else "Despesa"),
+		    #"Duplicated Column" = Table.DuplicateColumn(#"Ajuste de Coluna", "DT.MOVBANC", "DT.MOVBANC - Copy"),
+		    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"DT.MOVBANC - Copy", "DT.Competencia"}}),
+		    // --- STEP 4: Add the Date Created Column at the end ---
+		    #"Added File Date" = Table.AddColumn(#"Renamed Columns1", "Source File Date", each SourceDateCreated, type datetime),
+		    #"Renamed Columns2" = Table.RenameColumns(#"Added File Date",{{"Source File Date", "Data da Base"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns2", "ETAPAOBRA", each 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "REALIZADO_A_REALIZAR", each "Realizado"),
+		    #"Removed Columns2" = Table.RemoveColumns(#"Added Custom1",{"EMPREGRUPO"})
+		in
+		    #"Removed Columns2"
+		```
+	lineageTag: 7ef49ec0-c954-42a2-8096-4b3490422d61
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,97 @@
+relationship a44bed19-8f0a-47b5-b0ba-430283e32f77
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'DT. RECTO'
+	toColumn: LocalDateTable_42a1e5f2-ffab-4a0f-92cb-a67d1f1dce4a.Date
+
+relationship 503d3266-9dcf-48d4-b17d-2665cb895adf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'DT. DOC'
+	toColumn: LocalDateTable_dad1b4e8-fd15-4018-a76c-1afc4724bd91.Date
+
+relationship 0a9a7cd8-be0e-4cb8-b231-d6f1150bb399
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'DT.VENC'
+	toColumn: LocalDateTable_0351dafe-aacd-4e0c-a9e5-c39d359fd2cb.Date
+
+relationship b4a541c3-e7c5-4594-8b2f-e7c8bd7d5136
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'DT.VENCORIG'
+	toColumn: LocalDateTable_d53f33f7-19bd-40fd-aa55-5610649f9cb2.Date
+
+relationship 45b5e96a-5d4e-4318-9ab3-574aed12cd8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'DT.MOVBANC'
+	toColumn: LocalDateTable_712dcbb2-ac4b-423c-b34c-655962829e26.Date
+
+relationship 4b8a54c4-7501-e657-7fec-8baaa00bbab5
+	fromColumn: fct_gerencial.'PLANO DE CONTA'
+	toColumn: 'Lista de Plano de Contas'.'Plano de Contas'
+
+relationship 08818f8f-9dd0-7917-803d-63a95f6512bb
+	fromColumn: fct_gerencial.'DT.Competencia'
+	toColumn: dCalendario.Date
+
+relationship 34ee7e83-7b6c-64ac-b620-948f25434c4d
+	fromColumn: fct_gerencial.'CENTRO DE CUSTO'
+	toColumn: Gerencia.NÚMERO
+
+relationship 4bc4cce0-753f-a4c9-a4bc-b79034b9564f
+	crossFilteringBehavior: bothDirections
+	securityFilteringBehavior: bothDirections
+	fromColumn: fct_gerencial.'PLANO DE CONTA'
+	toColumn: dPlanoContas.COD_CONTA
+
+relationship 4f2012d4-97bc-415b-acae-56a7788ae592
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_gerencial.'Data da Base'
+	toColumn: LocalDateTable_ed8ccfdc-fb48-42f3-8b9f-f0153ec94ac6.Date
+
+relationship 5062a7dd-34eb-4a20-9c70-a35ac80c480b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT. RECTO'
+	toColumn: LocalDateTable_5109edf1-f9c1-4e54-9c44-ebb95b3cdb7f.Date
+
+relationship 8695eece-ac02-489b-b6cb-83610978c90a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT. DOC'
+	toColumn: LocalDateTable_dc226269-5d3a-4f72-9e87-6a0ca2b1f51b.Date
+
+relationship e4711d91-5e77-4a97-bce4-c64185f2c6a6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT.VENC'
+	toColumn: LocalDateTable_b8eec3fa-f793-4c5a-985d-4d58d375e77d.Date
+
+relationship 034b432f-efe7-4607-91a8-ccfb64e7dd7c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT.VENCORIG'
+	toColumn: LocalDateTable_164a7229-c3af-4e15-9cdf-c822653e85d4.Date
+
+relationship 82a810ab-ec03-4d7b-853f-2bd01d5c9c92
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT.MOVBANC'
+	toColumn: LocalDateTable_d43204f2-0682-4ab7-8799-b92580946b45.Date
+
+relationship 9fb6572a-61bb-45af-a503-4b434b7ca714
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'DT.Competencia'
+	toColumn: LocalDateTable_a0cab377-307e-4744-bdde-0d9828e31cf1.Date
+
+relationship 70e8f166-b74e-4479-b7f0-ac094968c1d6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_socio.'Data da Base'
+	toColumn: LocalDateTable_2ea10e5d-de4b-411e-9a9b-31fb330ba1e6.Date
+
+relationship 2818f94d-adbb-f3d5-8c07-27dd4041a4d8
+	crossFilteringBehavior: bothDirections
+	fromColumn: fct_gerencial.'CENTRO DE CUSTO'
+	toColumn: Dim_CLS_Obras_Ponte.NÚMERO
+
+relationship 1d49a1d0-f72b-7e17-d02a-23cc78f493a5
+	fromColumn: 'CLASSIFICAÇÃO DAS OBRAS'.NÚMERO
+	toColumn: Dim_CLS_Obras_Ponte.NÚMERO
+
+relationship 8df05972-f57c-20b6-c786-957160a9fc73
+	crossFilteringBehavior: bothDirections
+	fromColumn: dim_socio.'CENTRO DE CUSTO'
+	toColumn: Dim_CLS_Obras_Ponte.NÚMERO
+

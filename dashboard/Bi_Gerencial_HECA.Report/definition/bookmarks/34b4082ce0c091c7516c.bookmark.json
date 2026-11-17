@@ -1,0 +1,1030 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "hide socio2",
+  "name": "34b4082ce0c091c7516c",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "d59540b34708b0661a36",
+    "sections": {
+      "d59540b34708b0661a36": {
+        "visualContainers": {
+          "0415243c5929062910c2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "87041ef942b08bad0dab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "DT.MOVBANC"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dee38de9974c5309cea9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "EMPRESA RECBTO/PAGTO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "852fc8098b7b016c10e3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "HISTORICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0680ac10e00078d29708",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "RI"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "c5a6385059c6629dce8a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Retencao"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "14a27a308515611d35d0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Consumido"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e7f9443f49bbed45263c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Credito INSS"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Retencao"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f3839e2739699312405b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "87041ef942b08bad0dab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "DT.MOVBANC"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "dee38de9974c5309cea9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "EMPRESA RECBTO/PAGTO"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "852fc8098b7b016c10e3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "HISTORICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0680ac10e00078d29708",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "RI"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "c5a6385059c6629dce8a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Retencao"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "14a27a308515611d35d0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Consumido"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "a9b5712c0a66822a07ab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "FORNECEDOR/CLIENTE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5702f045c748a6b0e693",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Transf Receita"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "502d0cc413ac8e15a0c0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "87041ef942b08bad0dab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "DT.MOVBANC"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "dee38de9974c5309cea9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "EMPRESA RECBTO/PAGTO"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "852fc8098b7b016c10e3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "HISTORICO"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0680ac10e00078d29708",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "RI"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "c5a6385059c6629dce8a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Retencao"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "14a27a308515611d35d0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "INSS Consumido"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "4d867cf8ac009acb1e20",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "FORNECEDOR/CLIENTE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a6bb340419e073678906",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Transf Receita"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "47e37e14c80aa3a5d437": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f10824e116e7a39e0018": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "edeacb0325c523692eb5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e772b004b132ad322de0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "DESCRITIVO DO CENTRO DE CUSTO"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "DESCRITIVO DO CENTRO DE CUSTO"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f4617247460490725cb5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e595f41251b2abe91140",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CLASSIFICAÇÃO DAS OBRAS"
+                        }
+                      },
+                      "Property": "UNIDADE DE NEGÓCIO"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CLASSIFICAÇÃO DAS OBRAS"
+                        }
+                      },
+                      "Property": "UNIDADE DE NEGÓCIO"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8882128798c61e26ab06": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "62779012c0889bb2c156",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CLASSIFICAÇÃO DAS OBRAS"
+                        }
+                      },
+                      "Property": "UN/ Gerencia"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CLASSIFICAÇÃO DAS OBRAS"
+                        }
+                      },
+                      "Property": "UN/ Gerencia"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5c9cb35f4bd6e7aa9481": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e14afb62c1e1b896d6d3",
+                  "type": "Advanced",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "dim_socio"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "DT.MOVBANC"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2012c0441979c390ad99",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "dim_socio"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "DT.MOVBANC"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Month"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "PropertyVariationSource": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Entity": "dim_socio"
+                                }
+                              },
+                              "Name": "Variation",
+                              "Property": "DT.MOVBANC"
+                            }
+                          },
+                          "Hierarchy": "Date Hierarchy"
+                        }
+                      },
+                      "Level": "Year"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Values"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "dim_socio.DT.MOVBANC.Variation.Date Hierarchy.Year"
+                      ],
+                      "isCollapsed": true,
+                      "identityKeys": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "LocalDateTable_d43204f2-0682-4ab7-8799-b92580946b45"
+                              }
+                            },
+                            "Property": "Year"
+                          }
+                        }
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "dim_socio.DT.MOVBANC.Variation.Date Hierarchy.Month"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": null
+                  }
+                }
+              ]
+            }
+          },
+          "7a6e986c8dd615d428dc": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f02d5dc829014194ca94",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "RI"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "RI"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9cff24a9dd580d33e374": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "669921fc31a957cc8e28",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_gerencial"
+                        }
+                      },
+                      "Property": "EMPRESA RECBTO/PAGTO"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_gerencial"
+                        }
+                      },
+                      "Property": "EMPRESA RECBTO/PAGTO"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f98b8da000069b7d42d5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3313d7470b6655903534",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "PLANO DE CONTA_1"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "PLANO DE CONTA_1"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "4a76eece8ace67230120": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6da0fb076440086c87e3",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "HISTORICO"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "HISTORICO"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "c5f427bcdd096bbd5c50": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "fd93b6d47aa4abaeb290",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "FORNECEDOR/CLIENTE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_socio"
+                        }
+                      },
+                      "Property": "FORNECEDOR/CLIENTE"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "948c42300177a418d6cd": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "7205756162051e3e278e": {
+            "isHidden": true
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

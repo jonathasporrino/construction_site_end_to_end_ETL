@@ -1,0 +1,104 @@
+table Gerencia
+	lineageTag: d120672d-745d-4199-8412-692a010afee6
+
+	column 'TIPO CLIENTE'
+		dataType: string
+		lineageTag: 2f5d40d0-b4fd-4012-87ae-6a00e6920bd8
+		summarizeBy: none
+		sourceColumn: TIPO CLIENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column NÚMERO
+		dataType: string
+		lineageTag: d0cde8c5-c4c3-4c33-998b-9b69c5bd5ac2
+		summarizeBy: none
+		sourceColumn: NÚMERO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UNIDADE DE NEGÓCIO'
+		dataType: string
+		lineageTag: f3cc6a7d-d510-43b8-91a7-9d33438e35c7
+		summarizeBy: none
+		sourceColumn: UNIDADE DE NEGÓCIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CENTROS DE CUSTOS'
+		dataType: string
+		lineageTag: 337ccb19-28c7-46e2-8714-c35c51bb24be
+		summarizeBy: none
+		sourceColumn: CENTROS DE CUSTOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTROLE
+		dataType: string
+		lineageTag: 399f5795-864e-440d-bea2-8cfbc9e48229
+		summarizeBy: none
+		sourceColumn: CONTROLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'UN/ Gerencia'
+		dataType: string
+		lineageTag: 38224ac1-c968-4bc1-9fac-701e8d2835f1
+		summarizeBy: none
+		sourceColumn: UN/ Gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: dde4a3c0-59ca-4436-9bae-d89e4d8dac60
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cliente
+		dataType: string
+		lineageTag: ded0f1f5-dc63-4ab9-8ec9-fba866bf4d43
+		summarizeBy: none
+		sourceColumn: Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR ATUAL DO CONTRATO'
+		dataType: decimal
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: ce6bf852-e03c-408d-9c5f-7d5e697a60f6
+		summarizeBy: none
+		sourceColumn: VALOR ATUAL DO CONTRATO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Gerencia = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("G:\Meu Drive\Info_enterprise\externo\HECA\Projeto_HECA\Bases\Classificação das Obras 2.0.xlsx"), null, true),
+				    Heca_Sheet = Source{[Item="Heca",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Heca_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"TIPO CLIENTE", type text}, {"NÚMERO", type any}, {"UNIDADE DE NEGÓCIO", type text}, {"CENTROS DE CUSTOS", type text}, {"CONTROLE", type text}, {"UN/ Gerencia", type text}, {"UF", type text}, {"Cliente", type text}, {"% HECA -#(lf)URBANE", type number}, {"TIPO ", type text}, {"Sócio 1 - Descrição", type text}, {"Sócio 1 - % Particiapação Societária", type number}, {"Sócio 1  - % TAC", type number}, {"VALOR ATUAL DO CONTRATO", type any}, {"% FÍSICO EXECUTADO", type number}, {"CRÉDITO DE INSS", type text}, {"CONTA INSS 01", type text}, {"CONTA INSS 02", type text}, {"CONTA INSS 03", type any}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","JALMIR","JALMIR",Replacer.ReplaceText,{"UN/ Gerencia"}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Replaced Value", {"TIPO CLIENTE", "NÚMERO", "UNIDADE DE NEGÓCIO", "CENTROS DE CUSTOS", "CONTROLE", "UN/ Gerencia", "UF", "Cliente", "% HECA -#(lf)URBANE", "TIPO ", "VALOR ATUAL DO CONTRATO", "% FÍSICO EXECUTADO", "CRÉDITO DE INSS", "CONTA INSS 01", "CONTA INSS 02", "CONTA INSS 03"}, "Attribute", "Value"),
+				    #"Inserted Text Before Delimiter" = Table.AddColumn(#"Unpivoted Columns", "Text Before Delimiter", each Text.BeforeDelimiter([Attribute], " ", 1), type text),
+				    #"Inserted Text After Delimiter" = Table.AddColumn(#"Inserted Text Before Delimiter", "Text After Delimiter", each Text.AfterDelimiter([Attribute], "- "), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Text After Delimiter",{{"Text Before Delimiter", "ID Socio"}, {"Text After Delimiter", "Tipo Informação"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"TIPO CLIENTE", "NÚMERO", "UNIDADE DE NEGÓCIO", "CENTROS DE CUSTOS", "CONTROLE", "UN/ Gerencia", "UF", "Cliente", "% HECA -#(lf)URBANE", "TIPO ", "VALOR ATUAL DO CONTRATO", "% FÍSICO EXECUTADO", "CRÉDITO DE INSS", "CONTA INSS 01", "CONTA INSS 02", "CONTA INSS 03", "Attribute", "ID Socio", "Tipo Informação", "Value"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"Attribute"}),
+				    #"Pivoted Column" = Table.Pivot(#"Removed Columns", List.Distinct(#"Removed Columns"[#"Tipo Informação"]), "Tipo Informação", "Value"),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Pivoted Column",{"% HECA -#(lf)URBANE", "TIPO ", "% FÍSICO EXECUTADO", "CRÉDITO DE INSS", "CONTA INSS 01", "CONTA INSS 02", "CONTA INSS 03", "ID Socio", "Descrição", "% Particiapação Societária", "% TAC"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns1",{{"VALOR ATUAL DO CONTRATO", Currency.Type}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type1","JALMIIR","JALMIR",Replacer.ReplaceText,{"UN/ Gerencia"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

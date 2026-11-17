@@ -1,0 +1,646 @@
+table _SELECT_RZ_SELECT_FIRST_1_LISTAEMPREGRUPO_EMPREGRUPO_FROM_S_CTB__202601131620_da
+	lineageTag: f1461e08-940d-4806-8a30-3fe2d7eb8a6b
+
+	column 'CENTRO DE CUSTO'
+		dataType: string
+		lineageTag: 0f63abb6-4c0e-456a-a90d-9973aeab69db
+		summarizeBy: none
+		sourceColumn: CENTRO DE CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DESCRITIVO DO CENTRO DE CUSTO'
+		dataType: string
+		lineageTag: d961e670-5eee-486a-8fb1-034703d0255d
+		summarizeBy: none
+		sourceColumn: DESCRITIVO DO CENTRO DE CUSTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CNPJ FORNECEDOR'
+		dataType: string
+		lineageTag: 06fa954b-e86d-4863-8348-0a83979e1fc5
+		summarizeBy: none
+		sourceColumn: CNPJ FORNECEDOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column FORNECEDOR/CLIENTE
+		dataType: string
+		lineageTag: 436e2b10-8293-46ae-ac61-ac6e60dc4c54
+		summarizeBy: none
+		sourceColumn: FORNECEDOR/CLIENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLANO DE CONTA'
+		dataType: string
+		lineageTag: b442bbaf-a1ac-426f-bc5b-35b2ce36ee64
+		summarizeBy: none
+		sourceColumn: PLANO DE CONTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PLANO DE CONTA.1'
+		dataType: string
+		lineageTag: e53471e0-cbcb-419f-9f2b-1e81d3be56ae
+		summarizeBy: none
+		sourceColumn: PLANO DE CONTA.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR TOTAL EFETUADO'
+		dataType: string
+		lineageTag: 9741c755-a877-4dc3-9cda-71cc4d98d45c
+		summarizeBy: none
+		sourceColumn: VALOR TOTAL EFETUADO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR TOTAL PREVISTO'
+		dataType: string
+		lineageTag: 878119e3-90dc-44be-b426-010a484f0e10
+		summarizeBy: none
+		sourceColumn: VALOR TOTAL PREVISTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR TOTAL COMP.'
+		dataType: string
+		lineageTag: ab633aeb-a1b1-4848-a22c-cda5eebf9746
+		summarizeBy: none
+		sourceColumn: VALOR TOTAL COMP.
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMPRESA
+		dataType: string
+		lineageTag: 6f16d4d7-40a2-4079-bce9-fd3ff1b22084
+		summarizeBy: none
+		sourceColumn: EMPRESA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EMPRESA RECBTO/PAGTO'
+		dataType: string
+		lineageTag: be7fb05b-3796-4359-bc7f-1d715d63294b
+		summarizeBy: none
+		sourceColumn: EMPRESA RECBTO/PAGTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DT.MOVBANC'
+		dataType: string
+		lineageTag: 9c8805d0-8cac-4417-95d8-56ee4adf3326
+		summarizeBy: none
+		sourceColumn: DT.MOVBANC
+
+		annotation SummarizationSetBy = Automatic
+
+	column APCONTA
+		dataType: string
+		lineageTag: de120934-dea9-40a2-b8b3-a85232e0f95b
+		summarizeBy: none
+		sourceColumn: APCONTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RI
+		dataType: string
+		lineageTag: 94894a3f-b8b4-40e8-b634-c6443062a529
+		summarizeBy: none
+		sourceColumn: RI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OP.'
+		dataType: string
+		lineageTag: 517218b5-c5a6-4019-9bdd-719ab61a92d2
+		summarizeBy: none
+		sourceColumn: OP.
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'OP.DESC'
+		dataType: string
+		lineageTag: 08569d22-7c61-484d-9627-1b38ffa7b4ba
+		summarizeBy: none
+		sourceColumn: OP.DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column HISTORICO
+		dataType: string
+		lineageTag: f99febdb-3ba0-4210-98c1-08b3ca4a6799
+		summarizeBy: none
+		sourceColumn: HISTORICO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTINI
+		dataType: string
+		lineageTag: 1929cca6-bbab-473a-aeb3-2350ae60a73f
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTINI
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTFIM
+		dataType: string
+		lineageTag: 243cba61-384b-4895-90df-aaf881be9373
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTFIM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCDINI
+		dataType: string
+		lineageTag: 80cfd40c-b551-4d51-81a0-602767ab3ee3
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCDINI
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCDDESCINI
+		dataType: string
+		lineageTag: 87f69d7f-5ba0-4cf6-aa5c-27bea27a7563
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCDDESCINI
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCDFIM
+		dataType: string
+		lineageTag: 9d80b7c5-a5eb-419e-bad8-e93e573a511c
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCDFIM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCDDESCFIM
+		dataType: string
+		lineageTag: 491014cc-a06d-428c-b77c-4f5e5587ace3
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCDDESCFIM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPRESEL
+		dataType: string
+		lineageTag: 65c67826-d34e-422a-9221-61ed85aabd4f
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPRESEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPRERZSEL
+		dataType: string
+		lineageTag: c96d469d-6496-4a3d-a6d5-2f46de2386cd
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPRERZSEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPRENOMEIMAGEMSEL
+		dataType: string
+		lineageTag: 894c4fa4-1036-4d06-a68b-579cd7aafda4
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPRENOMEIMAGEMSEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_BLOCO
+		dataType: string
+		lineageTag: 2ae4899a-ac18-4d90-942b-d4029e1527cd
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_BLOCO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_BLOCODESC
+		dataType: string
+		lineageTag: 40c9c44b-7047-43cb-b69d-170e18db1826
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_BLOCODESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCDTIPO
+		dataType: string
+		lineageTag: bc1e7676-211e-4798-9ce5-cf0ec9c758d7
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCDTIPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_PGTOREC
+		dataType: string
+		lineageTag: f1927066-33d3-4e90-a5b6-a48fcc504bf0
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_PGTOREC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOT
+		dataType: string
+		lineageTag: 0a75b5f1-ac72-4c64-8b72-0d9113a4a4d5
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOT
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTSALDOATUAL
+		dataType: string
+		lineageTag: 52b8d054-4aa9-4ce5-a30b-b32552dd6b94
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTSALDOATUAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DT.VENC'
+		dataType: string
+		lineageTag: d4d7a989-592f-4b68-a29e-b24e6aaaa97e
+		summarizeBy: none
+		sourceColumn: DT.VENC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTVENCORIG
+		dataType: string
+		lineageTag: 70fca699-854c-4650-81f7-b3d2beda19a6
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTVENCORIG
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_NUMDOC
+		dataType: string
+		lineageTag: 68d3531c-ad9d-4c59-b803-6a3bf5708019
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_NUMDOC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_APREC
+		dataType: string
+		lineageTag: a1cda16c-c035-4502-8d24-8385f7015566
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_APREC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_FD
+		dataType: string
+		lineageTag: dfc158f6-2877-4a96-be60-25211a67c073
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_FD
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_INADIMPLENTE
+		dataType: string
+		lineageTag: a13fbc45-7773-44eb-a9fe-74edf3ebaba8
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_INADIMPLENTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTRECTO
+		dataType: string
+		lineageTag: a2f36006-84f3-4f7f-85d7-7cd69f65155d
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTRECTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TIPOREG
+		dataType: string
+		lineageTag: 996863c2-d917-4264-be27-7262561559d3
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TIPOREG
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALPREV_TOTRESP
+		dataType: string
+		lineageTag: 34c75e5d-6a79-4789-b3f0-e4548a6b0ef6
+		summarizeBy: none
+		sourceColumn: RZANALPREV_TOTRESP
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTATUALTXADMPREV
+		dataType: string
+		lineageTag: f39c9c8b-218e-415a-8106-9f3533829a4e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTATUALTXADMPREV
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTATUALTXADMCOMP
+		dataType: string
+		lineageTag: a4e3c69a-1829-4bbb-9cb6-3bbf63e3f3ef
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTATUALTXADMCOMP
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTATUALTXADMEFETU
+		dataType: string
+		lineageTag: 10638b88-c648-4697-beb2-f75922f9191e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTATUALTXADMEFETU
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTDOC
+		dataType: string
+		lineageTag: 8f772bd4-a87c-4c8c-9666-c2de895de9fa
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTDOC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_APCONTACDG
+		dataType: string
+		lineageTag: 9b2d2f9c-76e7-459d-8c88-a5d017314a22
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_APCONTACDG
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ARCONTACDG
+		dataType: string
+		lineageTag: 46f6b2ec-bd7d-484c-92bb-630823963b8e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ARCONTACDG
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ARCONTA
+		dataType: string
+		lineageTag: 78a6bb84-f132-4de4-9df0-7a5d333098a3
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ARCONTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_RIPEDIDOS
+		dataType: string
+		lineageTag: 34c82229-7c68-4fd1-b46b-2c779df4b602
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_RIPEDIDOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ARREC
+		dataType: string
+		lineageTag: 0bd900ec-e187-4c04-a77e-8552a323d84f
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ARREC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ENVIOCBRNUM
+		dataType: string
+		lineageTag: b0b96c83-a9a9-461d-851c-7ecdcf7a72c8
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ENVIOCBRNUM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ENVIOCBRDATA
+		dataType: string
+		lineageTag: 308ac54f-5e36-49cc-9c98-94c239a8e15e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ENVIOCBRDATA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_APSTATUS
+		dataType: string
+		lineageTag: aa6ea794-e344-4fdf-bbda-121082906a45
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_APSTATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ARSTATUS
+		dataType: string
+		lineageTag: 2d9ec22c-0164-41fd-ba9c-eed70124e078
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ARSTATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_SUPRIMEFLUXO
+		dataType: string
+		lineageTag: 8ee5a220-dcc9-43fc-914e-1c114b065032
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_SUPRIMEFLUXO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TPMOVDESC
+		dataType: string
+		lineageTag: 4c067170-3d77-4ebc-84a9-eb6e3eba1dc9
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TPMOVDESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CTR
+		dataType: string
+		lineageTag: 613b40df-5a36-44c4-bad2-6b7894226b3b
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CTR
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_PARCELANOMINAL
+		dataType: string
+		lineageTag: cb1c86dc-6d1c-4a82-ae12-c9f0bfa773dc
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_PARCELANOMINAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTJUROS
+		dataType: string
+		lineageTag: 280bac9f-1236-404d-84e6-be2ae1611347
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTJUROS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTMULTA
+		dataType: string
+		lineageTag: 28125622-324e-40ad-91df-dbb7ea13f30e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTMULTA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TOTDESCONTO
+		dataType: string
+		lineageTag: 93bd392d-8607-4b15-b3b7-8113a1eea9ab
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TOTDESCONTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_RIDTBAIXA
+		dataType: string
+		lineageTag: d613d523-bac5-4f3b-9d57-4b0d3c523f40
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_RIDTBAIXA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_ESPECIE
+		dataType: string
+		lineageTag: 34d5ff1e-c5cf-4e4b-a2fc-7e9ee04c6f4d
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_ESPECIE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TEMPRD
+		dataType: string
+		lineageTag: 4cfd08c9-ced1-46f8-9bc4-2e4fb04ea76d
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TEMPRD
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_TEMPRDDESC
+		dataType: string
+		lineageTag: f37e3535-b2bf-486e-85a2-79827385de2b
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_TEMPRDDESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DEBITOCCTB
+		dataType: string
+		lineageTag: 20c459a8-b438-4147-bf06-16a1bc39a980
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DEBITOCCTB
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DTRECITEMINSUMO
+		dataType: string
+		lineageTag: 8b3368e2-65d0-4583-a28b-22f2489110d1
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DTRECITEMINSUMO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CCTB
+		dataType: string
+		lineageTag: 5d1c98ef-a6fc-43c5-9e60-7e3e7ec237e1
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CCTB
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_IMOBILIARIA
+		dataType: string
+		lineageTag: 4cb6efdb-e39b-40e6-83df-dd26c445e5cc
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_IMOBILIARIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_CODCTRFINAN
+		dataType: string
+		lineageTag: ba87c66d-9347-446f-aebb-68d97f33013d
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_CODCTRFINAN
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_BLOCOS
+		dataType: string
+		lineageTag: 07c1a0f4-1b20-4d4c-b672-2b885b58b5a5
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_BLOCOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_DESCBLOCOS
+		dataType: string
+		lineageTag: 65454cf8-9cb1-4fac-ad0d-0465ac9031e0
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_DESCBLOCOS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_UNDCDG
+		dataType: string
+		lineageTag: 0d874c30-ce2d-41d9-aeac-ca6ecfae7468
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_UNDCDG
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_UNDDESC
+		dataType: string
+		lineageTag: 898105cc-6c89-47f4-bbbc-376f42acbe8f
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_UNDDESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPREGRUPO
+		dataType: string
+		lineageTag: d8ee979b-11fd-44b4-b15c-ca60a2c38c85
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPREGRUPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPREGRUPODESC
+		dataType: string
+		lineageTag: b822cce4-1235-4571-850f-a86912670f7c
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPREGRUPODESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPRDGRUPO
+		dataType: string
+		lineageTag: d5992263-cf38-4916-93a5-2d26cecc1e2e
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPRDGRUPO
+
+		annotation SummarizationSetBy = Automatic
+
+	column RZANALCONSOL_EMPRDGRUPODESC
+		dataType: string
+		lineageTag: d41b2056-c595-4c94-8447-030128fc2e1b
+		summarizeBy: none
+		sourceColumn: RZANALCONSOL_EMPRDGRUPODESC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _SELECT_RZ_SELECT_FIRST_1_LISTAEMPREGRUPO_EMPREGRUPO_FROM_S_CTB__202601131620_da = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Jonathas\Downloads\_SELECT_RZ_SELECT_FIRST_1_LISTAEMPREGRUPO_EMPREGRUPO_FROM_S_CTB__202601131620_dados.csv"),[Delimiter=",", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Renamed Columns" = Table.RenameColumns(#"Promoted Headers",{{"RZANALCONSOL_CCD", "PLANO DE CONTA"}, {"RZANALCONSOL_CCDDESC", "PLANO DE CONTA.1"}, {"RZANALCONSOL_EMPRD", "CENTRO DE CUSTO"}, {"RZANALCONSOL_EMPRDDESC", "DESCRITIVO DO CENTRO DE CUSTO"}, {"RZANALCONSOL_TOTCOMP", "VALOR TOTAL COMP."}, {"RZANALCONSOL_TOTPREV", "VALOR TOTAL PREVISTO"}, {"RZANALCONSOL_TOTEFETU", "VALOR TOTAL EFETUADO"}, {"RZANALCONSOL_DTVENC", "DT.VENC"},
+				{"RZANALCONSOL_RAZAO", "FORNECEDOR/CLIENTE"}, {"RZANALCONSOL_FORNCPFCNPJ", "CNPJ FORNECEDOR"}, {"RZANALCONSOL_EMPRE", "EMPRESA"}, {"RZANALCONSOL_EMPRERZ", "EMPRESA RECBTO/PAGTO"}, {"RZANALCONSOL_DTMOVBANC", "DT.MOVBANC"}, {"RZANALCONSOL_HISTORICO", "HISTORICO"}, {"RZANALCONSOL_OPERACAO", "OP."}, {"RZANALCONSOL_OPERACAODESC", "OP.DESC"}, {"RZANALCONSOL_RI", "RI"}, {"RZANALCONSOL_APCONTA", "APCONTA"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"CENTRO DE CUSTO", "DESCRITIVO DO CENTRO DE CUSTO", "CNPJ FORNECEDOR", "FORNECEDOR/CLIENTE", "PLANO DE CONTA", "PLANO DE CONTA.1", "VALOR TOTAL EFETUADO", "VALOR TOTAL PREVISTO", "VALOR TOTAL COMP.", "EMPRESA", "EMPRESA RECBTO/PAGTO", "DT.MOVBANC", "APCONTA", "RI", "OP.", "OP.DESC", "HISTORICO", "RZANALCONSOL_DTINI", "RZANALCONSOL_DTFIM", "RZANALCONSOL_CCDINI", "RZANALCONSOL_CCDDESCINI", "RZANALCONSOL_CCDFIM", "RZANALCONSOL_CCDDESCFIM", "RZANALCONSOL_EMPRESEL", "RZANALCONSOL_EMPRERZSEL", "RZANALCONSOL_EMPRENOMEIMAGEMSEL", "RZANALCONSOL_BLOCO", "RZANALCONSOL_BLOCODESC", "RZANALCONSOL_CCDTIPO", "RZANALCONSOL_PGTOREC", "RZANALCONSOL_TOT", "RZANALCONSOL_TOTSALDOATUAL", "RZANALCONSOL_DTVENCORIG", "RZANALCONSOL_EMPRENOMEIMAGEM", "RZANALCONSOL_NUMDOC", "RZANALCONSOL_APREC", "RZANALCONSOL_FD", "RZANALCONSOL_INADIMPLENTE", "RZANALCONSOL_DTRECTO", "RZANALCONSOL_TIPOREG", "RZANALPREV_TOTRESP", "RZANALCONSOL_TOTATUALTXADMPREV", "RZANALCONSOL_TOTATUALTXADMCOMP", "RZANALCONSOL_TOTATUALTXADMEFETU", "RZANALCONSOL_DTDOC", "RZANALCONSOL_APCONTACDG", "RZANALCONSOL_ARCONTACDG", "RZANALCONSOL_ARCONTA", "RZANALCONSOL_RIPEDIDOS", "RZANALCONSOL_ARREC", "RZANALCONSOL_ENVIOCBRNUM", "RZANALCONSOL_ENVIOCBRDATA", "RZANALCONSOL_APSTATUS", "RZANALCONSOL_ARSTATUS", "RZANALCONSOL_SUPRIMEFLUXO", "RZANALCONSOL_TPMOVDESC", "RZANALCONSOL_CTR", "RZANALCONSOL_PARCELANOMINAL", "RZANALCONSOL_TOTJUROS", "RZANALCONSOL_TOTMULTA", "RZANALCONSOL_TOTDESCONTO", "RZANALCONSOL_RIDTBAIXA", "RZANALCONSOL_ESPECIE", "RZANALCONSOL_TEMPRD", "RZANALCONSOL_TEMPRDDESC", "RZANALCONSOL_DEBITOCCTB", "RZANALCONSOL_DTRECITEMINSUMO", "RZANALCONSOL_CCTB", "RZANALCONSOL_IMOBILIARIA", "RZANALCONSOL_CODCTRFINAN", "RZANALCONSOL_BLOCOS", "RZANALCONSOL_DESCBLOCOS", "RZANALCONSOL_UNDCDG", "RZANALCONSOL_UNDDESC", "RZANALCONSOL_EMPREGRUPO", "RZANALCONSOL_EMPREGRUPODESC", "RZANALCONSOL_EMPRDGRUPO", "RZANALCONSOL_EMPRDGRUPODESC"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"RZANALCONSOL_EMPRENOMEIMAGEM"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Renamed Columns1",{"CENTRO DE CUSTO", "DESCRITIVO DO CENTRO DE CUSTO", "CNPJ FORNECEDOR", "FORNECEDOR/CLIENTE", "PLANO DE CONTA", "PLANO DE CONTA.1", "VALOR TOTAL EFETUADO", "VALOR TOTAL PREVISTO", "VALOR TOTAL COMP.", "EMPRESA", "EMPRESA RECBTO/PAGTO", "DT.MOVBANC", "APCONTA", "RI", "OP.", "OP.DESC", "HISTORICO", "DT.VENC", "RZANALCONSOL_DTINI", "RZANALCONSOL_DTFIM", "RZANALCONSOL_CCDINI", "RZANALCONSOL_CCDDESCINI", "RZANALCONSOL_CCDFIM", "RZANALCONSOL_CCDDESCFIM", "RZANALCONSOL_EMPRESEL", "RZANALCONSOL_EMPRERZSEL", "RZANALCONSOL_EMPRENOMEIMAGEMSEL", "RZANALCONSOL_BLOCO", "RZANALCONSOL_BLOCODESC", "RZANALCONSOL_CCDTIPO", "RZANALCONSOL_PGTOREC", "RZANALCONSOL_TOT", "RZANALCONSOL_TOTSALDOATUAL", "RZANALCONSOL_DTVENCORIG", "RZANALCONSOL_NUMDOC", "RZANALCONSOL_APREC", "RZANALCONSOL_FD", "RZANALCONSOL_INADIMPLENTE", "RZANALCONSOL_DTRECTO", "RZANALCONSOL_TIPOREG", "RZANALPREV_TOTRESP", "RZANALCONSOL_TOTATUALTXADMPREV", "RZANALCONSOL_TOTATUALTXADMCOMP", "RZANALCONSOL_TOTATUALTXADMEFETU", "RZANALCONSOL_DTDOC", "RZANALCONSOL_APCONTACDG", "RZANALCONSOL_ARCONTACDG", "RZANALCONSOL_ARCONTA", "RZANALCONSOL_RIPEDIDOS", "RZANALCONSOL_ARREC", "RZANALCONSOL_ENVIOCBRNUM", "RZANALCONSOL_ENVIOCBRDATA", "RZANALCONSOL_APSTATUS", "RZANALCONSOL_ARSTATUS", "RZANALCONSOL_SUPRIMEFLUXO", "RZANALCONSOL_TPMOVDESC", "RZANALCONSOL_CTR", "RZANALCONSOL_PARCELANOMINAL", "RZANALCONSOL_TOTJUROS", "RZANALCONSOL_TOTMULTA", "RZANALCONSOL_TOTDESCONTO", "RZANALCONSOL_RIDTBAIXA", "RZANALCONSOL_ESPECIE", "RZANALCONSOL_TEMPRD", "RZANALCONSOL_TEMPRDDESC", "RZANALCONSOL_DEBITOCCTB", "RZANALCONSOL_DTRECITEMINSUMO", "RZANALCONSOL_CCTB", "RZANALCONSOL_IMOBILIARIA", "RZANALCONSOL_CODCTRFINAN", "RZANALCONSOL_BLOCOS", "RZANALCONSOL_DESCBLOCOS", "RZANALCONSOL_UNDCDG", "RZANALCONSOL_UNDDESC", "RZANALCONSOL_EMPREGRUPO", "RZANALCONSOL_EMPREGRUPODESC", "RZANALCONSOL_EMPRDGRUPO", "RZANALCONSOL_EMPRDGRUPODESC"})
+				in
+				    #"Reordered Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
