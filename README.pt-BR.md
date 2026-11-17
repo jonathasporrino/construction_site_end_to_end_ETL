@@ -23,6 +23,8 @@ flowchart LR
     D --> W[(warehouse.duckdb<br/>staging / marts)]
     W -->|post-hook no target prod| P[exports/*.parquet] --> PBI2[Power BI<br/>modo Import]
 ```
+### Detalhes de Arquitetura
+![pipeline diagram](img/Arquitetura%20de%20Dados%20da%20Construtora.png)
 
 | Pasta | Conteúdo |
 |---|---|
