@@ -1,0 +1,144 @@
+version: 1
+models:
+  - name: fct_lancamento
+    description: >
+      Fact table of financial entries. Grain: one document installment (lancamento_id).
+      Incremental merge on updated_at with a lookback window; idempotent on reruns.
+    config:
+      contract: {enforced: true}
+    columns:
+      - {name: lancamento_id, data_type: integer, constraints: [{type: not_null}, {type: primary_key}], data_tests: [unique]}
+      - name: obra_key
+        data_type: integer
+        constraints: [{type: not_null}]
+        data_tests: [{relationships: {arguments: {to: ref('dim_obra'), field: obra_key}}}]
+      - name: conta_key
+        data_type: bigint
+        constraints: [{type: not_null}]
+        data_tests: [{relationships: {arguments: {to: ref('dim_conta'), field: conta_key}}}]
+      - name: contraparte_key
+        data_type: integer
+        constraints: [{type: not_null}]
+        data_tests: [{relationships: {arguments: {to: ref('dim_empresa'), field: empresa_key}}}]
+      - name: empresa_recbto_pagto_key
+        data_type: integer
+        constraints: [{type: not_null}]
+        data_tests:
+          - relationships: {arguments: {to: ref('dim_empresa'), field: empresa_key}}
+          - dbt_utils.expression_is_true:
+              arguments: {expression: "<> -1"}
+              config: {severity: warn}
+      - name: operacao_key
+        data_type: integer
+        constraints: [{type: not_null}]
+        data_tests: [{relationships: {arguments: {to: ref('dim_operacao'), field: operacao_key}}}]
+      - name: data_competencia_key
+        data_type: integer
+        constraints: [{type: not_null}]
+        data_tests: [{relationships: {arguments: {to: ref('dim_date'), field: date_key}}}]
+      - {name: data_documento_key, data_type: integer}
+      - {name: data_vencimento_key, data_type: integer}
+      - {name: data_vencimento_original_key, data_type: integer}
+      - {name: data_movimento_bancario_key, data_type: integer, description: Null while the item is open.}
+      - {name: numdoc, data_type: text}
+      - {name: historico, data_type: text}
+      - {name: tipo_titulo, data_type: char(2), description: AP (payable) or AR (receivable).}
+      - name: status
+        data_type: text
+        data_tests: [{accepted_values: {arguments: {values: [REALIZADO, A REALIZAR]}}}]
+      - {name: is_dre, data_type: boolean, description: True for accounts 1xxx/2xxx (in the P&L).}
+      - {name: tipo_movimento_socio, data_type: text, description: APORTE / DEVOLUCAO_APORTE / other operation category.}
+      - {name: is_inss_compensado, data_type: boolean}
+      - {name: apconta, data_type: text}
+      - name: valor_previsto
+        data_type: "numeric(16,2)"
+        data_tests: [{dbt_utils.expression_is_true: {arguments: {expression: ">= 0"}}}]
+      - {name: valor_compromissado, data_type: "numeric(16,2)", description: Open amount still to receive or pay (ERP column TOTCOMP).}
+      - name: valor_efetuado
+        data_type: "numeric(16,2)"
+        data_tests: [{dbt_utils.expression_is_true: {arguments: {expression: ">= 0"}}}]
+      - {name: valor_total, data_type: "numeric(16,2)", description: valor_compromissado + valor_efetuado.}
+      - {name: tx_adm_prev, data_type: "numeric(16,2)"}
+      - {name: tx_adm_comp, data_type: "numeric(16,2)"}
+      - {name: tx_adm_efetu, data_type: "numeric(16,2)"}
+      - {name: updated_at, data_type: timestamp}
+      - {name: dbt_loaded_at, data_type: timestamp}
+
+  - name: dim_obra
+    description: Works (cost centers), SCD Type 1. obra_key = ERP work number; -1 = unknown.
+    columns:
+      - name: obra_key
+        data_tests: [unique, not_null]
+  - name: dim_conta
+    description: Chart of accounts with a 3-level hierarchy and nature (revenue/expense).
+    columns:
+      - name: conta_key
+        data_tests: [unique, not_null]
+      - name: nivel1_codigo
+        data_tests: [{not_null: {config: {where: "conta_key <> -1"}}}]
+      - name: natureza
+        data_tests: [{accepted_values: {arguments: {values: [RECEITA, DESPESA, FORA_DRE]}}}]
+      - name: categoria_custo
+        data_tests:
+          - not_null: {config: {where: "natureza = 'DESPESA'", severity: warn}}
+  - name: dim_empresa
+    description: Companies; role-playing for counterpart, receiving/paying company and partner.
+    columns:
+      - name: empresa_key
+        data_tests: [unique, not_null]
+  - name: dim_operacao
+    columns:
+      - name: operacao_key
+        data_tests: [unique, not_null]
+  - name: dim_date
+    description: Calendar 2022-2027, pt-BR labels.
+    columns:
+      - name: date_key
+        data_tests: [unique, not_null]
+  - name: bridge_obra_socio
+    description: Partner shares per work with SCD Type 2 validity (valido_de / valido_ate / is_current).
+    columns:
+      - name: obra_socio_key
+        data_tests: [unique, not_null]
+      - name: obra_key
+        data_tests: [{relationships: {arguments: {to: ref('dim_obra'), field: obra_key}}}]
+      - name: empresa_key
+        data_tests: [{relationships: {arguments: {to: ref('dim_empresa'), field: empresa_key}}}]
+
+  - name: fct_posicao_economica_mensal
+    description: >
+      Periodic snapshot (monthly) of the economic position: one row per closing month x work x P&L account.
+      Closed months are kept as saved; an incremental run re-saves only the closing month.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: {combination_of_columns: [mes_referencia, obra_key, conta_key]}
+    columns:
+      - name: mes_referencia_key
+        data_tests: [not_null, {relationships: {arguments: {to: ref('dim_date'), field: date_key}}}]
+      - name: obra_key
+        data_tests: [{relationships: {arguments: {to: ref('dim_obra'), field: obra_key}}}]
+      - name: conta_key
+        data_tests: [{relationships: {arguments: {to: ref('dim_conta'), field: conta_key}}}]
+  - name: seg_acesso_usuario
+    description: RLS table for Power BI (email -> unidade_negocio).
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: {combination_of_columns: [email, unidade_negocio]}
+
+exposures:
+  - name: power_bi_dre_gerencial_obras
+    label: Power BI - Construction management P&L
+    type: dashboard
+    maturity: medium
+    description: Power BI report (PBIP) in Import mode over the marts schema.
+    owner: {name: Jonathas Porrino}
+    depends_on:
+      - ref('fct_lancamento')
+      - ref('dim_obra')
+      - ref('dim_conta')
+      - ref('dim_empresa')
+      - ref('dim_operacao')
+      - ref('dim_date')
+      - ref('bridge_obra_socio')
+      - ref('fct_posicao_economica_mensal')
+      - ref('seg_acesso_usuario')

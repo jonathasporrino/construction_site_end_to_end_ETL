@@ -1,0 +1,9 @@
+snapshots:
+  - name: snap_obra_socio
+    description: SCD Type 2 history of partner shares per work (share % and TAC % change over time).
+    relation: source('erp', 'obra_socio')
+    config:
+      unique_key: [numero_obra, socio_seq]
+      strategy: check
+      check_cols: [empresa_id, pct_participacao, pct_tac]
+      hard_deletes: invalidate
