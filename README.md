@@ -186,3 +186,9 @@ All marts are declared as an [exposure](analytics/models/marts/marts.yml) for th
 - The RLS e-mails in `acesso_usuario` are placeholders; the real access list was never part of the original project.
 - `is_centro_administrativo` (works 1/101/120/150) is a hypothesis for the original hard-coded filter, not a confirmed rule.
 - The original model still needs updated file paths and a few renamed literals before it refreshes against the legacy files. That edit list is kept privately, not in this repo.
+
+## 📖 Docs
+
+Docs are generated with `dbt docs generate` and published to GitHub Pages:
+
+**→ 
