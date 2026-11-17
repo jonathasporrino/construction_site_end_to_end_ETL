@@ -8,6 +8,8 @@ select
         when '2' then 'DESPESA'
         else 'FORA_DRE'
     end as natureza,
+    p.regra_classificacao as categoria_custo,  -- MATERIAL / MÃO DE OBRA / EQUIPAMENTO / SERVIÇO TERCEIRIZADO / ...
+    left(p.codigo_conta, 1) in ('1', '2') as is_dre,
     g1.codigo_grupo as nivel1_codigo, 
     g1.descricao_grupo as nivel1_descricao,
     g2.codigo_grupo as nivel2_codigo,
@@ -32,6 +34,8 @@ select
     '-1',
     'NÃO INFORMADA', 
     'FORA_DRE',
+    null,
+    false,
     null,
     null,
     null,

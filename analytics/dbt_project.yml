@@ -36,3 +36,5 @@ vars:
   incremental_lookback_days: 3  # re-merge rows updated in the last N days (late ERP edits)
   reprocess_from_month: null    # e.g. '2026-01-01' to force re-merge from that month
   mes_fechamento: null          # closing month; null = previous month
+  export_path: exports              # where the prod target writes the marts for Power BI
+  export_format: parquet            # 'csv' if your DuckDB driver can't write Parquet (see the guide)
