@@ -3,4 +3,5 @@ dbt_internal_packages/
 logs/
 target/
 .env
-*.duckdb
+*.duckdbexports/*
+!exports/.gitkeep

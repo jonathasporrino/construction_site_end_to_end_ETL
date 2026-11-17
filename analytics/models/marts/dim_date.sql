@@ -5,7 +5,7 @@ with spine as(
 )
 select
     {{ date_key('date_day') }} as date_key,
-    date_key::date as data,
+    date_day::date as data,
     extract(year from date_day)::int as ano,
     extract(month from date_day)::int as mes_num,
     case month(date_day) 
