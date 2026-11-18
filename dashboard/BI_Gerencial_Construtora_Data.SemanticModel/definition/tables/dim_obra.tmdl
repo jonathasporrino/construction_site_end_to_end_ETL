@@ -1,0 +1,117 @@
+table dim_obra
+
+	column obra_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: obra_key
+
+	column numero_obra
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: numero_obra
+
+	column descricao_obra
+		dataType: string
+		summarizeBy: none
+		sourceColumn: descricao_obra
+
+	column tipo_obra
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_obra
+
+	column tipo_cliente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_cliente
+
+	column grupo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: grupo
+
+	column unidade_negocio
+		dataType: string
+		summarizeBy: none
+		sourceColumn: unidade_negocio
+
+	column controle
+		dataType: string
+		summarizeBy: none
+		sourceColumn: controle
+
+	column gerente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: gerente
+
+	column uf
+		dataType: string
+		summarizeBy: none
+		sourceColumn: uf
+
+	column cliente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cliente
+
+	column pct_empresa_parceira
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: pct_empresa_parceira
+
+	column valor_contrato
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_contrato
+
+	column pct_fisico_executado
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: pct_fisico_executado
+
+	column credito_inss
+		dataType: string
+		summarizeBy: none
+		sourceColumn: credito_inss
+
+	column contas_inss
+		dataType: string
+		summarizeBy: none
+		sourceColumn: contas_inss
+
+	column dt_inicio
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: dt_inicio
+
+	column dt_fim
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: dt_fim
+
+	column is_ativa
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_ativa
+
+	column is_centro_administrativo
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_centro_administrativo
+
+	partition dim_obra = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "dim_obra.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"obra_key", Int64.Type}, {"numero_obra", Int64.Type}, {"descricao_obra", type text}, {"tipo_obra", type text}, {"tipo_cliente", type text}, {"grupo", type text}, {"unidade_negocio", type text}, {"controle", type text}, {"gerente", type text}, {"uf", type text}, {"cliente", type text}, {"pct_empresa_parceira", Currency.Type}, {"valor_contrato", Currency.Type}, {"pct_fisico_executado", Currency.Type}, {"credito_inss", type text}, {"contas_inss", type text}, {"dt_inicio", type datetime}, {"dt_fim", type datetime}, {"is_ativa", type logical}, {"is_centro_administrativo", type logical}})
+				in
+				    Typed
+

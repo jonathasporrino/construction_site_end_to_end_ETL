@@ -1,0 +1,4 @@
+/// Pasta com os Parquet gravados por `dbt build --target prod` (analytics/exports). Termina com barra.
+expression ExportPath = "G:\Meu Drive\Projetos\Portifolio\Construtora\bases\construtora\construtora_data\analytics\exports\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	annotation PBI_ResultType = Text

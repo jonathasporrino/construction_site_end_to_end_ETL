@@ -1,0 +1,72 @@
+table dim_conta
+
+	column conta_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: conta_key
+
+	column codigo_conta
+		dataType: string
+		summarizeBy: none
+		sourceColumn: codigo_conta
+
+	column descricao_conta
+		dataType: string
+		summarizeBy: none
+		sourceColumn: descricao_conta
+
+	column natureza
+		dataType: string
+		summarizeBy: none
+		sourceColumn: natureza
+
+	column categoria_custo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: categoria_custo
+
+	column is_dre
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_dre
+
+	column nivel1_codigo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel1_codigo
+
+	column nivel1_descricao
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel1_descricao
+
+	column nivel2_codigo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel2_codigo
+
+	column nivel2_descricao
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel2_descricao
+
+	column nivel3_codigo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel3_codigo
+
+	column nivel3_descricao
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nivel3_descricao
+
+	partition dim_conta = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "dim_conta.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"conta_key", Int64.Type}, {"codigo_conta", type text}, {"descricao_conta", type text}, {"natureza", type text}, {"categoria_custo", type text}, {"is_dre", type logical}, {"nivel1_codigo", type text}, {"nivel1_descricao", type text}, {"nivel2_codigo", type text}, {"nivel2_descricao", type text}, {"nivel3_codigo", type text}, {"nivel3_descricao", type text}})
+				in
+				    Typed
+

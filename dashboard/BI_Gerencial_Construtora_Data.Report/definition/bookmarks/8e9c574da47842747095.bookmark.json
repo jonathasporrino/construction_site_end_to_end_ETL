@@ -1,0 +1,1388 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "displayName": "Mostrar Filtro",
+  "name": "8e9c574da47842747095",
+  "options": {
+    "targetVisualNames": [
+      "89d55ae9c594b9350ebe"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "553f747b7d7c4c783c53",
+    "sections": {
+      "553f747b7d7c4c783c53": {
+        "visualContainers": {
+          "20ef2c76072b7db486ef": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5b0c38d259a00eae794d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contraparte"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e02343fb87e864a0561c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "historico"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4eb5a8010293c2908364",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "codigo_conta"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "00939c47022ae6a65740",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "descricao_conta"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "cb48aa62e3aae7206b23",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "op_codigo"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7fe9d96d07da4940dc15",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "descricao_operacao"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5ab97e80489a01b6ac8c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Empresa Pagto"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "97c52a421ba4602ce7ae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "numdoc"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "bff161187cbd282552be",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "lancamento_id"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dd8309f9de4680d618d2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_date"
+                        }
+                      },
+                      "Property": "data"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f7637e2c85b7d25eb099",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Receita Efetuado"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "87bed5ed67dee0e1da3c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Receita Compromissado"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "fdc19c7abb06c905a01b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Efetuado"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "032f87f861c0700e761c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Fluxo Caixa Efetuado Acumulado"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "da5ee3da2c0114ab2032",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Compromissado"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1fef02b05762574070c6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Fluxo Caixa Compromissado Acumulado"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Compromissado"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "810adb755c388b1849ed": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "21d7f36966f5b1b975e0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_date"
+                        }
+                      },
+                      "Property": "mes_ano"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2c1b5c18c9a284a522e2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Receita"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ea2f83ef0dcacaa41487",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Negativo"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "64684df86897a2e05d00",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Saldo Movimento Total"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineClusteredColumnComboChart",
+              "objects": {},
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_date"
+                        }
+                      },
+                      "Property": "mes_ano"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "89d55ae9c594b9350ebe": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e838ff06ad83e8d5ccba",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "f",
+                                  "Entity": "Contraparte",
+                                  "Type": 0
+                                },
+                                {
+                                  "Name": "_",
+                                  "Entity": "_Medidas",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "f"
+                                      }
+                                    },
+                                    "Property": "razao_social"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Source": "_"
+                                        }
+                                      },
+                                      "Property": "Total Despesa Compromissado"
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 10
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "contra1",
+                        "Entity": "Contraparte",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "contra1"
+                                    }
+                                  },
+                                  "Property": "razao_social"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contraparte"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e0675c5eac0aa48cba7a",
+                  "type": "Advanced",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "_",
+                        "Entity": "_Medidas",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 1,
+                            "Left": {
+                              "Measure": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "_"
+                                  }
+                                },
+                                "Property": "Total Despesa Compromissado"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "0L"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Compromissado"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "clusteredBarChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Medidas"
+                        }
+                      },
+                      "Property": "Total Despesa Compromissado"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contraparte"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "7683148da092174688ad": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "d7c8f7445184076cb1d5": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "a5e20f64e594d5d1b897": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "91d1ca749bf58b22cd8c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "ccef3ba9e3eb99431fc0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5160bd47e9e6d404c0ae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "status"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "status"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "5c1323dfb8b90cf4154f": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "3ec325f633b0e3380864": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "01ed009c640a0a7e30ab",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "descricao_obra"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "descricao_obra"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9683fe773fab8eed69e7": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "4bbfdd811b77a2a92ee7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "unidade_negocio"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "unidade_negocio"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "18507e2dcae359bbfb04": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e3db25596b68b3c865ae",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "gerente"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_obra"
+                        }
+                      },
+                      "Property": "gerente"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8f488848e6e8a3577f2c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "11f09ea8d45098878014",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_date"
+                        }
+                      },
+                      "Property": "mes_ano"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_date"
+                        }
+                      },
+                      "Property": "mes_ano"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "248552ebc83e2614dbe0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5ee2eb200846306abe20",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "lancamento_id"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "lancamento_id"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8d1b96aa5852ad42de7b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "72cbf6a0d2190beedde7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "numdoc"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "numdoc"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "faed200b031e655e39c9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8df34059285060584ca6",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Empresa Pagto"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Empresa Pagto"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9ee5e18d1107b6d70642": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d62923353b3a0eca551b",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "descricao_operacao"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "descricao_operacao"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "625425440b088205ca14": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c4269cdca787319e4611",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "op_codigo"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_operacao"
+                        }
+                      },
+                      "Property": "op_codigo"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "9e3535ea03959eb82355": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ee3a6e3f0ab9a4a8ca75",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "descricao_conta"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "descricao_conta"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "8616d8babef12a1dfd66": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0e627f629edea54bd785",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "codigo_conta"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_conta"
+                        }
+                      },
+                      "Property": "codigo_conta"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "147793fdb356c417ebdd": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "9e5713b0491e90a4ed3d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "historico"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "historico"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "238034e50d33468ce2f2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "d523ff5b8be3e760275e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contraparte"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Contraparte"
+                        }
+                      },
+                      "Property": "razao_social"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "18902e595c0bb8d34a44": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "45d89c3481332ba0f181": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

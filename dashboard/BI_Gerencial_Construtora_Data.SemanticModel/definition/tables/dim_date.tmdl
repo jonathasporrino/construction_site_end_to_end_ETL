@@ -1,0 +1,73 @@
+table dim_date
+	dataCategory: Time
+
+	column date_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: date_key
+
+	column data
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: data
+
+	column ano
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: ano
+
+	column mes_num
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: mes_num
+
+	column mes_nome
+		dataType: string
+		summarizeBy: none
+		sourceColumn: mes_nome
+		sortByColumn: mes_num
+
+	column trimestre
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column ano_mes
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: ano_mes
+
+	column mes_ano
+		dataType: string
+		summarizeBy: none
+		sourceColumn: mes_ano
+		sortByColumn: ano_mes
+
+	column dia_semana
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: dia_semana
+
+	column nome_dia
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nome_dia
+
+	column inicio_mes
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: inicio_mes
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "dim_date.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"date_key", Int64.Type}, {"data", type datetime}, {"ano", Int64.Type}, {"mes_num", Int64.Type}, {"mes_nome", type text}, {"trimestre", Int64.Type}, {"ano_mes", Int64.Type}, {"mes_ano", type text}, {"dia_semana", Int64.Type}, {"nome_dia", type text}, {"inicio_mes", type datetime}})
+				in
+				    Typed
+

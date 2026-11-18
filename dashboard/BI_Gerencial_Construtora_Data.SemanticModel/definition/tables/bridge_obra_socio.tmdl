@@ -1,0 +1,63 @@
+table bridge_obra_socio
+
+	column obra_socio_key
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: obra_socio_key
+
+	column obra_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: obra_key
+
+	column empresa_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: empresa_key
+
+	column socio_seq
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: socio_seq
+
+	column pct_participacao
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: pct_participacao
+
+	column pct_tac
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: pct_tac
+
+	column valido_de
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: valido_de
+
+	column valido_ate
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: valido_ate
+
+	column is_current
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_current
+
+	partition bridge_obra_socio = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "bridge_obra_socio.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"obra_socio_key", type text}, {"obra_key", Int64.Type}, {"empresa_key", Int64.Type}, {"socio_seq", Int64.Type}, {"pct_participacao", Currency.Type}, {"pct_tac", Currency.Type}, {"valido_de", type datetime}, {"valido_ate", type datetime}, {"is_current", type logical}})
+				in
+				    Typed
+

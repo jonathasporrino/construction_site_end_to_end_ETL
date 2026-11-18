@@ -1,0 +1,421 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "0415243c5929062910c2",
+  "position": {
+    "x": 54.28571428571429,
+    "y": 58.57142857142858,
+    "z": 0,
+    "height": 335.7142857142857,
+    "width": 1222.857142857143,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_obra"
+                    }
+                  },
+                  "Property": "descricao_obra"
+                }
+              },
+              "queryRef": "dim_obra.descricao_obra",
+              "nativeQueryRef": "DESCRITIVO DO CENTRO DE CUSTO",
+              "displayName": "Obra"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "data_movimento_bancario"
+                }
+              },
+              "queryRef": "fct_lancamento.data_movimento_bancario",
+              "nativeQueryRef": "DT MOV BANC",
+              "displayName": "DT MOV BANC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "historico"
+                }
+              },
+              "queryRef": "fct_lancamento.historico",
+              "nativeQueryRef": "HISTORICO",
+              "displayName": "Histórico"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "INSS Retencao"
+                }
+              },
+              "queryRef": "_Medidas.INSS Retencao",
+              "nativeQueryRef": "INSS Retencao"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "INSS Consumido"
+                }
+              },
+              "queryRef": "_Medidas.INSS Consumido",
+              "nativeQueryRef": "INSS Consumido"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Credito INSS"
+                }
+              },
+              "queryRef": "_Medidas.Credito INSS",
+              "nativeQueryRef": "Credito INSS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "INSS Consumido"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "403.63886514425394D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_lancamento.historico"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "151.67962206291236D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.INSS Retencao"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.24827631790313D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_lancamento.data_movimento_bancario"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "147.6249761089949D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Credito INSS"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "278.59478871523186D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_obra.descricao_obra"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'INSS Cliente'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Minimal'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "87041ef942b08bad0dab",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "data_movimento_bancario"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dee38de9974c5309cea9",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Empresa Pagto"
+              }
+            },
+            "Property": "razao_social"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "852fc8098b7b016c10e3",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "historico"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0680ac10e00078d29708",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "lancamento_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "c5a6385059c6629dce8a",
+        "ordinal": 4,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "INSS Retencao"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "14a27a308515611d35d0",
+        "ordinal": 5,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "INSS Consumido"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

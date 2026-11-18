@@ -1,0 +1,32 @@
+table dim_operacao
+
+	column operacao_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: operacao_key
+
+	column op_codigo
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: op_codigo
+
+	column descricao_operacao
+		dataType: string
+		summarizeBy: none
+		sourceColumn: descricao_operacao
+
+	column categoria_operacao
+		dataType: string
+		summarizeBy: none
+		sourceColumn: categoria_operacao
+
+	partition dim_operacao = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "dim_operacao.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"operacao_key", Int64.Type}, {"op_codigo", Int64.Type}, {"descricao_operacao", type text}, {"categoria_operacao", type text}})
+				in
+				    Typed
+

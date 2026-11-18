@@ -1,0 +1,397 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "78e7556d773e1976aad1",
+  "position": {
+    "x": 52.85714285714286,
+    "y": 486.1428571448292,
+    "z": 6000,
+    "height": 224.2857142857143,
+    "width": 661.4285714285714,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contraparte"
+                    }
+                  },
+                  "Property": "razao_social"
+                }
+              },
+              "queryRef": "Contraparte.razao_social",
+              "nativeQueryRef": "FORNECEDOR/CLIENTE",
+              "displayName": "Fornecedor/Cliente"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_lancamento"
+                        }
+                      },
+                      "Property": "valor_efetuado"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_lancamento.valor_efetuado)",
+              "nativeQueryRef": "VALOR TOTAL EFETUADO",
+              "displayName": "VALOR TOTAL EFETUADO"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "data_movimento_bancario"
+                }
+              },
+              "queryRef": "fct_lancamento.data_movimento_bancario",
+              "nativeQueryRef": "DT.MOVBANC",
+              "displayName": "DT Mov. Bancário"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "historico"
+                }
+              },
+              "queryRef": "fct_lancamento.historico",
+              "nativeQueryRef": "HISTORICO",
+              "displayName": "Histórico"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Contraparte"
+                  }
+                },
+                "Property": "razao_social"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.3636231174509D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_lancamento.historico"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "143.26529598238724D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_lancamento.valor_efetuado)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "238.82406272747184D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Contraparte.razao_social"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sparse'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transferencia Impostos'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "87041ef942b08bad0dab",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "data_movimento_bancario"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dee38de9974c5309cea9",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Empresa Pagto"
+              }
+            },
+            "Property": "razao_social"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "852fc8098b7b016c10e3",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "historico"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0680ac10e00078d29708",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "lancamento_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "60ae7f5242e31a476eac",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_operacao"
+              }
+            },
+            "Property": "op_codigo"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "dimope1",
+              "Entity": "dim_operacao",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "dimope1"
+                          }
+                        },
+                        "Property": "op_codigo"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "733L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "2b6dcaad80baaa2d6142",
+        "ordinal": 5,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_lancamento"
+                  }
+                },
+                "Property": "valor_efetuado"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d47877558bb9104213d4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Contraparte"
+              }
+            },
+            "Property": "razao_social"
+          }
+        },
+        "type": "Categorical"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

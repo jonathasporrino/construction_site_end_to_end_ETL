@@ -1,0 +1,594 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "20ef2c76072b7db486ef",
+  "position": {
+    "x": 54.91525423728814,
+    "y": 77.49152542372882,
+    "z": 0,
+    "height": 354.50847457627117,
+    "width": 1217.8983050847457,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contraparte"
+                    }
+                  },
+                  "Property": "razao_social"
+                }
+              },
+              "queryRef": "Contraparte.razao_social",
+              "nativeQueryRef": "FORNECEDOR/CLIENTE",
+              "displayName": "Fornecedor/Cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Total Receita Efetuado"
+                }
+              },
+              "queryRef": "_Medidas.Total Receita Efetuado",
+              "nativeQueryRef": "Entrada Efetuado",
+              "displayName": "Entrada Efetuado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Total Despesa Efetuado"
+                }
+              },
+              "queryRef": "_Medidas.Total Despesa Efetuado",
+              "nativeQueryRef": "Saída Efetuado",
+              "displayName": "Saída Efetuado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Fluxo Caixa Efetuado Acumulado"
+                }
+              },
+              "queryRef": "_Medidas.Fluxo Caixa Efetuado Acumulado",
+              "nativeQueryRef": "Fluxo Caixa Efetuado Acumulado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Total Receita Compromissado"
+                }
+              },
+              "queryRef": "_Medidas.Total Receita Compromissado",
+              "nativeQueryRef": "Entrada Compromissado",
+              "displayName": "Entrada Compromissado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Total Despesa Compromissado"
+                }
+              },
+              "queryRef": "_Medidas.Total Despesa Compromissado",
+              "nativeQueryRef": "Saída Compromissado",
+              "displayName": "Saída Compromissado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Fluxo Caixa Compromissado Acumulado"
+                }
+              },
+              "queryRef": "_Medidas.Fluxo de Caixa Compromissao",
+              "nativeQueryRef": "Fluxo Caixa Compromissado Acumulado"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "historico"
+                }
+              },
+              "queryRef": "fct_lancamento.historico",
+              "nativeQueryRef": "HISTORICO",
+              "displayName": "Histórico"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "lancamento_id"
+                }
+              },
+              "queryRef": "fct_lancamento.lancamento_id",
+              "nativeQueryRef": "RI",
+              "displayName": "RI"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_conta"
+                    }
+                  },
+                  "Property": "codigo_conta"
+                }
+              },
+              "queryRef": "dim_conta.codigo_conta",
+              "nativeQueryRef": "PLANO DE CONTA",
+              "displayName": "Plano de Conta"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_conta"
+                    }
+                  },
+                  "Property": "descricao_conta"
+                }
+              },
+              "queryRef": "dim_conta.descricao_conta",
+              "nativeQueryRef": "DESC PLANO DE CONTA",
+              "displayName": "DESC PLANO DE CONTA"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_operacao"
+                    }
+                  },
+                  "Property": "op_codigo"
+                }
+              },
+              "queryRef": "Sum(dim_operacao.op_codigo)",
+              "nativeQueryRef": "OP.",
+              "displayName": "OP."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_operacao"
+                    }
+                  },
+                  "Property": "descricao_operacao"
+                }
+              },
+              "queryRef": "dim_operacao.descricao_operacao",
+              "nativeQueryRef": "DESC OP.",
+              "displayName": "DESC OP."
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Empresa Pagto"
+                    }
+                  },
+                  "Property": "razao_social"
+                }
+              },
+              "queryRef": "Empresa Pagto.razao_social",
+              "nativeQueryRef": "EMPRESA RECBTO/PAGTO",
+              "displayName": "Empresa Recbto/Pagto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_lancamento"
+                    }
+                  },
+                  "Property": "numdoc"
+                }
+              },
+              "queryRef": "fct_lancamento.numdoc",
+              "nativeQueryRef": "NUMDOC",
+              "displayName": "Nº Documento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_date"
+                    }
+                  },
+                  "Property": "data"
+                }
+              },
+              "queryRef": "dim_date.data",
+              "nativeQueryRef": "DT.Competencia",
+              "displayName": "Data Competência"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_date"
+                  }
+                },
+                "Property": "data"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "308.4132693844924D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_lancamento.historico"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.41176901258928D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Fluxo Caixa Efetuado Acumulado"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "186.23529054096898D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Medidas.Fluxo de Caixa Compromissao"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3cca90abb1ecb62be9d8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Contraparte"
+              }
+            },
+            "Property": "razao_social"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f1d248471aee0bba0049",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_conta"
+              }
+            },
+            "Property": "codigo_conta"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8db93cbfb260500d40ab",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_conta"
+              }
+            },
+            "Property": "descricao_conta"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d0e0f19c9760a9848486",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_operacao"
+              }
+            },
+            "Property": "op_codigo"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e5afa4f09d87313104e8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_operacao"
+              }
+            },
+            "Property": "descricao_operacao"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dde37edcd198e0b88967",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Empresa Pagto"
+              }
+            },
+            "Property": "razao_social"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8ba42ad22089ad531d3b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "numdoc"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1ac062447b1eea7e52b3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_date"
+              }
+            },
+            "Property": "data"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "086e60b2719754d80666",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Total Receita Efetuado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8f07bfa5d8c3733e5558",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Total Despesa Efetuado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5a96d756a0072150401d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Fluxo Caixa Efetuado Acumulado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a5b8c59325976d9134ec",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Total Receita Compromissado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "93ec2812b3492c60377b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Total Despesa Compromissado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "21a1bf503d6175e4bb08",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Medidas"
+              }
+            },
+            "Property": "Fluxo Caixa Compromissado Acumulado"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7567a0ba760900854b46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "lancamento_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a1bb43458ce31c7b941a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_lancamento"
+              }
+            },
+            "Property": "historico"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

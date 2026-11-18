@@ -1,0 +1,363 @@
+table _Medidas
+
+	measure 'Total Receita Efetuado' = ```
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[natureza] = "RECEITA") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Total Despesa Efetuado' = ```
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[natureza] = "DESPESA") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Valor Liquido Efetuado' =
+			-- despesa vem positiva do dbt (teste >= 0), então líquido = receita - despesa
+			[Total Receita Efetuado] - [Total Despesa Efetuado]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Saldo Efetuado' = ```
+			[Total Receita Efetuado] - [Total Despesa Efetuado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Saldo Movimento efetuado' = ```
+			[Total Receita Efetuado] - [Total Despesa Efetuado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Total Receita Compromissado' = ```
+			CALCULATE(SUM(fct_lancamento[valor_compromissado]), dim_conta[natureza] = "RECEITA") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Total Despesa Compromissado' = ```
+			CALCULATE(SUM(fct_lancamento[valor_compromissado]), dim_conta[natureza] = "DESPESA") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Receita Diferida Compromissado' = ```
+			CALCULATE(SUM(fct_lancamento[valor_compromissado]), dim_conta[codigo_conta] = "1001020003") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Valor Liquido Compromissado' = [Total Receita Compromissado] - [Total Despesa Compromissado]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Saldo Compromissado' = ```
+			[Receita Diferida Compromissado] - [Total Despesa Compromissado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Saldo Movimento Compromissado' = ```
+			[Total Receita Compromissado] - [Total Despesa Compromissado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Comp.' = [Receita Diferida Compromissado] - [Total Despesa Compromissado]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Fluxo Caixa Efetuado Acumulado' = ```
+			-- acumula por competência e, no mesmo dia, por lançamento (substitui a ordem RI/NUMDOC do legado)
+			VAR DataAtual = MAX(fct_lancamento[data_competencia_key])
+			VAR IdAtual = MAX(fct_lancamento[lancamento_id])
+			RETURN
+			    CALCULATE(
+			        [Saldo Movimento efetuado],
+			        FILTER(
+			            ALLSELECTED(fct_lancamento[data_competencia_key], fct_lancamento[lancamento_id]),
+			            fct_lancamento[data_competencia_key] < DataAtual
+			                || (fct_lancamento[data_competencia_key] = DataAtual && fct_lancamento[lancamento_id] <= IdAtual)
+			        )
+			    )
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Efetuado
+
+	measure 'Fluxo Caixa Compromissado Acumulado' = ```
+			VAR DataAtual = MAX(fct_lancamento[data_competencia_key])
+			VAR IdAtual = MAX(fct_lancamento[lancamento_id])
+			RETURN
+			    CALCULATE(
+			        [Saldo Movimento Compromissado],
+			        FILTER(
+			            ALLSELECTED(fct_lancamento[data_competencia_key], fct_lancamento[lancamento_id]),
+			            fct_lancamento[data_competencia_key] < DataAtual
+			                || (fct_lancamento[data_competencia_key] = DataAtual && fct_lancamento[lancamento_id] <= IdAtual)
+			        )
+			    )
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: _Posição Compromissado
+
+	measure 'Saldo Total' = ```
+			[Saldo Efetuado] + [Saldo Compromissado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Acumulada
+
+	measure 'Total acumulado receita' = ```
+			[Saldo Efetuado] + [Saldo Compromissado] + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Acumulada
+
+	measure 'Saldo Movimento Total' = ```
+			[Saldo Movimento efetuado] + [Saldo Movimento Compromissado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Acumulada
+
+	measure 'Total Receita' = ```
+			[Total Receita Efetuado] + [Total Receita Compromissado]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Acumulada
+
+	measure 'Total Despesa Negativo' =
+			-- saída total (efetuado + compromissado) desenhada abaixo do eixo
+			-([Total Despesa Efetuado] + [Total Despesa Compromissado])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Acumulada
+
+	measure '%' = ```
+			VAR Numerador =
+			    SWITCH(
+			        TRUE(),
+			        SELECTEDVALUE(dim_conta[codigo_conta]) = "1001020003", [Comp.],
+			        SELECTEDVALUE(dim_conta[codigo_conta]) = "1001020001", [Valor Liquido Efetuado],
+			        [Total acumulado receita]
+			    )
+			VAR Denominador =
+			    SWITCH(
+			        TRUE(),
+			        ISINSCOPE(dim_conta[descricao_conta]), CALCULATE([Total acumulado receita], REMOVEFILTERS(dim_conta[descricao_conta], dim_conta[codigo_conta])),
+			        ISINSCOPE(dim_conta[nivel3_descricao]), CALCULATE([Total acumulado receita], REMOVEFILTERS(dim_conta[nivel3_descricao], dim_conta[nivel3_codigo])),
+			        ISINSCOPE(dim_conta[nivel2_descricao]), CALCULATE([Total acumulado receita], REMOVEFILTERS(dim_conta[nivel2_descricao], dim_conta[nivel2_codigo])),
+			        ISINSCOPE(dim_conta[nivel1_descricao]), [Total acumulado receita]
+			    )
+			RETURN
+			    IF(NOT ISBLANK(Denominador), DIVIDE(Numerador, Denominador, 0))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Posição Acumulada
+
+	measure %Resultado =
+			VAR TotalReceita = CALCULATE([Total acumulado receita], REMOVEFILTERS(dim_conta), dim_conta[natureza] = "RECEITA")
+			VAR TotalDespesa = CALCULATE([Total acumulado receita], REMOVEFILTERS(dim_conta), dim_conta[natureza] = "DESPESA")
+			RETURN
+			    -- TotalDespesa já vem negativo (saldo = receita - despesa)
+			    DIVIDE(TotalReceita + TotalDespesa, TotalReceita)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Posição Acumulada
+
+	measure '(+) Receita Acumulada' = ```
+			FORMAT([Total Receita Efetuado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure '(-) Despesa Acumulada' = ```
+			FORMAT([Total Despesa Efetuado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure 'Resultado Acum' = ```
+			FORMAT([Saldo Efetuado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure '(+) Receita Acumulada Compromissado' = ```
+			FORMAT([Total Receita Compromissado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure '(-) Despesa Acumulada Compromissado' = ```
+			FORMAT([Total Despesa Compromissado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure '(+) Receita Diferida Acumulada' = ```
+			FORMAT([Receita Diferida Compromissado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure 'Resultado Acum Compromissado' = ```
+			FORMAT([Saldo Compromissado], "R$ #,##0")
+			```
+		displayFolder: Posição Acumulada
+
+	measure 'Total Contrato' = ```
+			SUM(dim_obra[valor_contrato]) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Classificação Obra
+
+	measure '%Faturado' = ```
+			DIVIDE(
+			    CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[codigo_conta] IN {"1001020001", "1001020002"}),
+			    SUM(dim_obra[valor_contrato]),
+			    0
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Classificação Obra
+
+	measure 'Valor para Gauge' = ```
+			IF(HASONEVALUE(dim_obra[obra_key]), SELECTEDVALUE(dim_obra[pct_fisico_executado]), 0)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Classificação Obra
+
+	measure 'Mensagem para Gauge' = ```
+			IF(NOT HASONEVALUE(dim_obra[obra_key]), "Selecione uma obra para ver a informação", "")
+			```
+		displayFolder: Classificação Obra
+
+	measure Min = ```
+			0
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Classificação Obra
+
+	measure Max = ```
+			1
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Classificação Obra
+
+	measure 'Aporte all companies' = ```
+			-- sócio no papel de quem recebe o aporte
+			CALCULATE(
+			    SUM(fct_lancamento[valor_efetuado]),
+			    dim_operacao[categoria_operacao] = "APORTE",
+			    TREATAS(VALUES(Socio[empresa_key]), fct_lancamento[empresa_recbto_pagto_key])
+			) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure Devolução = ```
+			-- sócio no papel de contraparte
+			CALCULATE(
+			    SUM(fct_lancamento[valor_efetuado]),
+			    dim_operacao[categoria_operacao] = "APORTE",
+			    TREATAS(VALUES(Socio[empresa_key]), fct_lancamento[contraparte_key])
+			) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Saldo de Aportes' = ```
+			[Aporte all companies] - [Devolução]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'INSS Retencao' = ```
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[codigo_conta] = "4002010002") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'INSS Consumido' = ```
+			-- regra SCP + contas INSS da obra já vem do dbt (is_inss_compensado)
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), fct_lancamento[is_inss_compensado] = TRUE()) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Credito INSS' = ```
+			[INSS Retencao] - [INSS Consumido]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Impostos Lançados Custos' = ```
+			CALCULATE(
+			    SUM(fct_lancamento[valor_efetuado]),
+			    dim_conta[codigo_conta] IN {"2006010001", "2006010003", "2006020001", "2006020003"},
+			    TREATAS(VALUES(Socio[empresa_key]), fct_lancamento[empresa_recbto_pagto_key])
+			) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Receitas Recebidas' = ```
+			CALCULATE(
+			    SUM(fct_lancamento[valor_efetuado]),
+			    dim_operacao[categoria_operacao] = "RECEITA_SOCIO",
+			    TREATAS(VALUES(Socio[empresa_key]), fct_lancamento[empresa_recbto_pagto_key])
+			) + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Transf Receita' = ```
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_operacao[categoria_operacao] = "TRANSFERENCIA_RECEITA") + 0
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: Posição Societaria
+
+	measure 'Receita Futura' = ```
+			CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[codigo_conta] IN {"1001020001", "1001020002"})
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: TAC
+
+	measure Prevista = ```
+			-- receita da obra × % TAC de cada participação vigente
+			SUMX(
+			    FILTER(bridge_obra_socio, bridge_obra_socio[is_current]),
+			    CALCULATE([Receita Futura]) * bridge_obra_socio[pct_tac]
+			)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: TAC
+
+	measure 'TAC paga' = ```
+			VAR Paga = CALCULATE(SUM(fct_lancamento[valor_efetuado]), dim_conta[codigo_conta] IN {"2006030007", "2006030009"})
+			RETURN
+			    IF(ISBLANK([Prevista]) || [Prevista] = 0, BLANK(), Paga)
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: TAC
+
+	measure 'TAC a pagar' = ```
+			[Prevista] - [TAC paga]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: TAC
+
+	measure 'Total tac' = ```
+			[TAC a pagar] + [TAC paga]
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		displayFolder: TAC
+
+	measure 'Verificação TAC' = ```
+			VAR Diferenca = [Total tac] - [Prevista]
+			RETURN
+			    IF(ABS(Diferenca) < 0.01, "Ok", "Não Conforme (" & FORMAT(Diferenca, "R$ #,##0.00") & ")")
+			```
+		displayFolder: TAC
+
+	column Value
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Value
+
+	partition _Medidas = m
+		mode: import
+		source = #table({"Value"}, {})

@@ -1,0 +1,33 @@
+table Socio
+
+	column empresa_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: empresa_key
+
+	column razao_social
+		dataType: string
+		summarizeBy: none
+		sourceColumn: razao_social
+
+	column cnpj
+		dataType: string
+		summarizeBy: none
+		sourceColumn: cnpj
+
+	column tipo_empresa
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_empresa
+
+	partition Socio = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "dim_empresa.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"empresa_key", Int64.Type}, {"razao_social", type text}, {"cnpj", type text}, {"tipo_empresa", type text}}),
+				    Socios = Table.SelectRows(Typed, each [tipo_empresa] = "SOCIO")
+				in
+				    Socios
+

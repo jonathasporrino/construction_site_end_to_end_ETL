@@ -1,0 +1,178 @@
+table fct_lancamento
+
+	column lancamento_id
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: lancamento_id
+
+	column obra_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: obra_key
+
+	column conta_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: conta_key
+
+	column contraparte_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: contraparte_key
+
+	column empresa_recbto_pagto_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: empresa_recbto_pagto_key
+
+	column operacao_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: operacao_key
+
+	column data_competencia_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: data_competencia_key
+
+	column data_documento_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: data_documento_key
+
+	column data_vencimento_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: data_vencimento_key
+
+	column data_vencimento_original_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: data_vencimento_original_key
+
+	column data_movimento_bancario_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: data_movimento_bancario_key
+
+	column numdoc
+		dataType: string
+		summarizeBy: none
+		sourceColumn: numdoc
+
+	column historico
+		dataType: string
+		summarizeBy: none
+		sourceColumn: historico
+
+	column tipo_titulo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_titulo
+
+	column status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: status
+
+	column is_dre
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_dre
+
+	column tipo_movimento_socio
+		dataType: string
+		summarizeBy: none
+		sourceColumn: tipo_movimento_socio
+
+	column is_inss_compensado
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_inss_compensado
+
+	column apconta
+		dataType: string
+		summarizeBy: none
+		sourceColumn: apconta
+
+	column valor_previsto
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_previsto
+
+	column valor_compromissado
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_compromissado
+
+	column valor_efetuado
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_efetuado
+
+	column valor_total
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_total
+
+	column tx_adm_prev
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: tx_adm_prev
+
+	column tx_adm_comp
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: tx_adm_comp
+
+	column tx_adm_efetu
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: tx_adm_efetu
+
+	column updated_at
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: updated_at
+
+	column dbt_loaded_at
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: dbt_loaded_at
+
+	column data_movimento_bancario
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: data_movimento_bancario
+
+	partition fct_lancamento = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "fct_lancamento.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"lancamento_id", Int64.Type}, {"obra_key", Int64.Type}, {"conta_key", Int64.Type}, {"contraparte_key", Int64.Type}, {"empresa_recbto_pagto_key", Int64.Type}, {"operacao_key", Int64.Type}, {"data_competencia_key", Int64.Type}, {"data_documento_key", Int64.Type}, {"data_vencimento_key", Int64.Type}, {"data_vencimento_original_key", Int64.Type}, {"data_movimento_bancario_key", Int64.Type}, {"numdoc", type text}, {"historico", type text}, {"tipo_titulo", type text}, {"status", type text}, {"is_dre", type logical}, {"tipo_movimento_socio", type text}, {"is_inss_compensado", type logical}, {"apconta", type text}, {"valor_previsto", Currency.Type}, {"valor_compromissado", Currency.Type}, {"valor_efetuado", Currency.Type}, {"valor_total", Currency.Type}, {"tx_adm_prev", Currency.Type}, {"tx_adm_comp", Currency.Type}, {"tx_adm_efetu", Currency.Type}, {"updated_at", type datetime}, {"dbt_loaded_at", type datetime}}),
+				    // yyyymmdd -> date; null = ainda não realizado
+				    MovBanc = Table.AddColumn(Typed, "data_movimento_bancario", each let k = [data_movimento_bancario_key] in if k = null then null else #date(Number.IntegerDivide(k, 10000), Number.Mod(Number.IntegerDivide(k, 100), 100), Number.Mod(k, 100)), type date)
+				in
+				    MovBanc
+

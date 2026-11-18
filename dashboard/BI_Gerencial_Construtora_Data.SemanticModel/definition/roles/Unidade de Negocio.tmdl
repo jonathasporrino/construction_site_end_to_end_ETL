@@ -1,0 +1,9 @@
+/// RLS a partir de seg_acesso_usuario (seed acesso_usuario): "*" vê todas as unidades.
+role 'Unidade de Negocio'
+	modelPermission: read
+
+	tablePermission dim_obra =
+			VAR unidade =
+			    LOOKUPVALUE(seg_acesso_usuario[unidade_negocio], seg_acesso_usuario[email], USERPRINCIPALNAME())
+			RETURN
+			    unidade = "*" || dim_obra[unidade_negocio] = unidade

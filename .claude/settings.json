@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Applications/**)",
+      "Read(//Users/jonathasporrino/Applications/**)",
+      "Bash(mdfind -name \"PowerViz\")",
+      "Bash(mdfind -name \"Power Viz\")",
+      "Read(//Users/jonathasporrino/**)",
+      "Bash(.venv/bin/python -)",
+      "Bash(../../.venv/bin/python -)",
+      "Bash(grep -v -E 'LocalDate|^\\\\s*$')"
+    ],
+    "additionalDirectories": [
+      "/Users/jonathasporrino/Library/CloudStorage/GoogleDrive-jonathas.porrino@gmail.com/Meu Drive/Projetos/Portifolio/Construtora/bases/construtora/construtora_data/analytics/exports/definition/tables"
+    ]
+  }
+}

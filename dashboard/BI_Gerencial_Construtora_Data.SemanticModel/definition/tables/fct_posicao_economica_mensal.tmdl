@@ -1,0 +1,59 @@
+table fct_posicao_economica_mensal
+
+	column mes_referencia
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: mes_referencia
+
+	column mes_referencia_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: mes_referencia_key
+
+	column obra_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: obra_key
+
+	column conta_key
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: conta_key
+
+	column valor_efetuado_acumulado
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_efetuado_acumulado
+
+	column valor_compromissado
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_compromissado
+
+	column valor_total
+		dataType: decimal
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		summarizeBy: sum
+		sourceColumn: valor_total
+
+	column salvo_em
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		summarizeBy: none
+		sourceColumn: salvo_em
+
+	partition fct_posicao_economica_mensal = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "fct_posicao_economica_mensal.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"mes_referencia", type datetime}, {"mes_referencia_key", Int64.Type}, {"obra_key", Int64.Type}, {"conta_key", Int64.Type}, {"valor_efetuado_acumulado", Currency.Type}, {"valor_compromissado", Currency.Type}, {"valor_total", Currency.Type}, {"salvo_em", type datetime}})
+				in
+				    Typed
+

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "power-viz": {
+      "command": "node",
+      "args": [
+        "/Users/jonathasporrino/.vscode/extensions/afzalkhan.power-viz-0.1.1/dist/mcp-server.js",
+        "--root",
+        "."
+      ]
+    }
+  }
+}

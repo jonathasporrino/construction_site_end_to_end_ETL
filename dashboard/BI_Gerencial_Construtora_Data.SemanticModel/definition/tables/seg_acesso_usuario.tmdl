@@ -1,0 +1,24 @@
+table seg_acesso_usuario
+	isHidden
+
+	column email
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: email
+
+	column unidade_negocio
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: unidade_negocio
+
+	partition seg_acesso_usuario = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(ExportPath & "seg_acesso_usuario.parquet")),
+				    Typed = Table.TransformColumnTypes(Source, {{"email", type text}, {"unidade_negocio", type text}})
+				in
+				    Typed
+

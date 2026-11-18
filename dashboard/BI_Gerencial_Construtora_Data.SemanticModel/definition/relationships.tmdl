@@ -1,0 +1,50 @@
+relationship fct_obra
+	fromColumn: fct_lancamento.obra_key
+	toColumn: dim_obra.obra_key
+
+relationship fct_conta
+	fromColumn: fct_lancamento.conta_key
+	toColumn: dim_conta.conta_key
+
+relationship fct_operacao
+	fromColumn: fct_lancamento.operacao_key
+	toColumn: dim_operacao.operacao_key
+
+relationship fct_contraparte
+	fromColumn: fct_lancamento.contraparte_key
+	toColumn: Contraparte.empresa_key
+
+relationship fct_empresa_pagto
+	fromColumn: fct_lancamento.empresa_recbto_pagto_key
+	toColumn: 'Empresa Pagto'.empresa_key
+
+relationship fct_data_competencia
+	fromColumn: fct_lancamento.data_competencia_key
+	toColumn: dim_date.date_key
+
+relationship fct_data_movbanc
+	fromColumn: fct_lancamento.data_movimento_bancario_key
+	toColumn: dim_date.date_key
+	isActive: false
+
+relationship posicao_obra
+	fromColumn: fct_posicao_economica_mensal.obra_key
+	toColumn: dim_obra.obra_key
+
+relationship posicao_conta
+	fromColumn: fct_posicao_economica_mensal.conta_key
+	toColumn: dim_conta.conta_key
+
+relationship posicao_mes
+	fromColumn: fct_posicao_economica_mensal.mes_referencia_key
+	toColumn: dim_date.date_key
+
+relationship bridge_obra
+	fromColumn: bridge_obra_socio.obra_key
+	toColumn: dim_obra.obra_key
+	crossFilteringBehavior: bothDirections
+
+relationship bridge_socio
+	fromColumn: bridge_obra_socio.empresa_key
+	toColumn: Socio.empresa_key
+

@@ -31,6 +31,7 @@ flowchart LR
 | [generate.py](generate.py) | Gerador de dados sintéticos: um ERP fictício em memória, gravado como CSVs limpos e como os arquivos Excel/CSV legados |
 | [erp_db/](erp_db/) | DDL do ERP de origem ([schema.sql](erp_db/schema.sql)) e o carregador que cria `output/erp_source.duckdb` |
 | [analytics/](analytics/) | Projeto dbt (adaptador DuckDB): staging, intermediate, marts, seeds, snapshot, analyses, testes singulares |
+| [dashboard/](dashboard/) | `BI_Gerencial_Construtora_Data.pbip`: relatório Power BI sobre os Parquet do dbt (parâmetro `ExportPath`, RLS `Unidade de Negocio`) |
 | [tests/](tests/) | Testes Python do gerador |
 | `output/` | Arquivos gerados (não versionados) |
 
