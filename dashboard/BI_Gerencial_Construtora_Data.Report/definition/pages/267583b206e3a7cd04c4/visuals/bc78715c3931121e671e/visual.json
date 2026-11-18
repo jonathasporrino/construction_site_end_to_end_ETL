@@ -6,7 +6,7 @@
     "y": 0,
     "z": 0,
     "height": 47.142857142857146,
-    "width": 54.285714285714292,
+    "width": 54.28571428571429,
     "tabOrder": 0
   },
   "visual": {
@@ -29,6 +29,19 @@
         }
       ],
       "outline": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "fill": [
         {
           "properties": {
             "show": {

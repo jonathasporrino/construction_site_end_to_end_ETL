@@ -25,13 +25,13 @@ table bridge_obra_socio
 
 	column pct_participacao
 		dataType: decimal
-		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		formatString: 0.00%;-0.00%;0.00%
 		summarizeBy: sum
 		sourceColumn: pct_participacao
 
 	column pct_tac
 		dataType: decimal
-		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		formatString: 0.00%;-0.00%;0.00%
 		summarizeBy: sum
 		sourceColumn: pct_tac
 

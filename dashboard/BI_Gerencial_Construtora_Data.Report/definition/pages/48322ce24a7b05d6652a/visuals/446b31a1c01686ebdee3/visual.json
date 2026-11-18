@@ -41,7 +41,7 @@
                   "Property": "Aporte all companies"
                 }
               },
-              "queryRef": "_Medidas.aporte Heca",
+              "queryRef": "_Medidas.Aporte all companies",
               "nativeQueryRef": "Aporte",
               "displayName": "Aporte"
             },
@@ -56,7 +56,7 @@
                   "Property": "Devolução"
                 }
               },
-              "queryRef": "_Medidas.Devolução Heca",
+              "queryRef": "_Medidas.Devolução",
               "nativeQueryRef": "Devolução"
             },
             {
@@ -70,7 +70,7 @@
                   "Property": "Saldo de Aportes"
                 }
               },
-              "queryRef": "_Medidas.Saldo de Aportes Heca",
+              "queryRef": "_Medidas.Saldo de Aportes",
               "nativeQueryRef": "Saldo de Aportes"
             }
           ]
@@ -147,7 +147,7 @@
             }
           },
           "selector": {
-            "metadata": "_Medidas.Saldo de Aportes Heca"
+            "metadata": "_Medidas.Saldo de Aportes"
           }
         },
         {
@@ -161,7 +161,7 @@
             }
           },
           "selector": {
-            "metadata": "_Medidas.aporte Heca"
+            "metadata": "_Medidas.Aporte all companies"
           }
         },
         {
@@ -175,7 +175,7 @@
             }
           },
           "selector": {
-            "metadata": "_Medidas.Devolução Heca"
+            "metadata": "_Medidas.Devolução"
           }
         },
         {

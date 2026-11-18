@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "bridge_obra_socio"
+                      "Entity": "dim_obra"
                     }
                   },
-                  "Property": "obra_socio_key"
+                  "Property": "descricao_obra"
                 }
               },
-              "queryRef": "bridge_obra_socio.obra_socio_key",
-              "nativeQueryRef": "ID Socio",
-              "displayName": "ID Sócio"
+              "queryRef": "dim_obra.descricao_obra",
+              "nativeQueryRef": "Obra",
+              "displayName": "Obra"
             },
             {
               "field": {
@@ -263,6 +263,13 @@
                   "Value": "8D"
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'TAC por Obra e Sócio'"
+                }
+              }
             }
           }
         }
@@ -348,10 +355,10 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "bridge_obra_socio"
+                "Entity": "dim_obra"
               }
             },
-            "Property": "obra_socio_key"
+            "Property": "descricao_obra"
           }
         },
         "type": "Categorical"

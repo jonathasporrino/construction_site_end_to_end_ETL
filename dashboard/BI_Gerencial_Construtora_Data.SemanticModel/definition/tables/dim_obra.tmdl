@@ -58,7 +58,7 @@ table dim_obra
 
 	column pct_empresa_parceira
 		dataType: decimal
-		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		formatString: 0.00%;-0.00%;0.00%
 		summarizeBy: sum
 		sourceColumn: pct_empresa_parceira
 
@@ -70,7 +70,7 @@ table dim_obra
 
 	column pct_fisico_executado
 		dataType: decimal
-		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		formatString: 0.00%;-0.00%;0.00%
 		summarizeBy: sum
 		sourceColumn: pct_fisico_executado
 
