@@ -145,6 +145,64 @@ All marts are declared as an [exposure](analytics/models/marts/marts.yml) for th
 | Contract | `fct_lancamento` | Column names, types and constraints enforced at build time |
 | Singular SQL | [analytics/tests/](analytics/tests/) | Fact reconciles with the ERP source (count and amounts); current partner shares add up to 100%; latest monthly position matches the fact at the cut-off |
 
+## Dashboard (version 1)
+
+> **This is an initial version, and version 2 will improve it.** I built the report with the Power BI VS Code extension on a Mac, which can't process the data, so the images below are layout renders with **placeholder values** (labels such as `razao_social A`), not real figures. The focus of this project is the **data modeling that solves the business problem**: the ERP → dbt → star schema pipeline above. Version 2 will connect the report to the Parquet exports and show real numbers.
+
+The report reads the marts as Parquet files (Import mode). Each page answers one management question, and the model behind it is the star schema above.
+
+### Capa (cover)
+
+![Capa](img/capa.png)
+
+Navigation by view: **Visão Obra** (work view) and **Visão Estratégica** (strategic view). The card at the bottom right, *Data Emissão da Base*, shows the snapshot date, which the original model took from the file metadata. Entries such as Materiais Adquiridos, Mão de Obra, Equipamentos, Orçamento and Análise de Portfólio are planned for version 2.
+
+### Posição Econômica Efetuada (what was received and paid)
+
+![Posição Econômica Efetuada](img/posicao_economica_efetuada.png)
+
+- **Filters:** Gerência (manager), Unidade de Negócio, Obra, Ano and Mês. Business unit also drives row-level security (`seg_acesso_usuario`).
+- **Four column charts** break the expenses down by cost class (Mão de Obra, Material, Equipamentos, Serviço Terceirizado), by work and month. The class comes from `dim_conta[categoria_custo]`.
+- **Summary table:** (+) Receita Acumulada, (−) Despesa Acumulada and Resultado Acum.
+- **% Físico gauge:** physical progress of the work (`pct_fisico_executado`), to compare with the financial result.
+- **Combo chart:** monthly revenue and expense (columns) and the cumulative balance (line).
+- **Bar chart:** expenses by supplier, from the counterpart role of `dim_empresa`.
+
+### Posição Econômica Compromissada (what is still to receive or pay)
+
+![Posição Econômica Compromissada](img/posicao_economica_compromissada.png)
+
+Same layout as the previous page, but over `valor_compromissado` (the amount still open, ERP column `TOTCOMP`). It adds the **Receita Diferida Acumulada** (deferred revenue), which stays committed until it is earned.
+
+### Posição Econômica Acumulada (P&L by account hierarchy)
+
+![Posição Econômica Acumulada](img/posicao_economica_acumulada.png)
+
+A matrix that opens from Plano de Contas to Grupo, Subgrupo, Conta and Fornecedor/Cliente (the 3-level hierarchy in `dim_conta`), with **Comp.**, **Efetuado**, **Total acumulado** and **%**. It reproduces the ERP report *3.29 – Demonstrativo Sintético Econômico*, where Total = Comp. + Efetuado. The cards at the bottom show Saldo Compromissado, Saldo Efetuado, Saldo Total and %Resultado (balance divided by total revenue).
+
+### Posição Financeira (cash flow)
+
+![Posição Financeira](img/posicao_financeira.png)
+
+A table with cash in (Entrada) and out (Saída), paid and committed, plus the accumulated cash flow, by supplier/client, history, account and operation. Below it: a monthly Entrada/Saída/Saldo chart and the **Top 10 Fornecedores**. A hidden filter panel (supplier, history, account, operation, company, document, paid/open) lets the user drill into a single entry.
+
+### Posição Societária (partners)
+
+![Posição Societária](img/posicao_societaria.png)
+
+- **Resumo Societário:** contributions (Aporte), refunds (Devolução) and the balance of contributions per partner.
+- **TAC por Obra e Sócio:** each partner's TAC share (`bridge_obra_socio`) and the TAC forecast, paid and still to pay.
+- **Aportes:** contributions by receiving/paying company, expandable to each entry.
+- **Transferência Impostos** and **Impostos Lançados nos Custos:** taxes moved between partners and taxes booked in the costs.
+
+### Posição Societária 2 (INSS and revenue transfers)
+
+![Posição Societária 2](img/posicao_societaria_2.png)
+
+- **INSS Cliente:** INSS withheld, INSS consumed and the remaining credit per work.
+- **Transferência de Receita:** revenue transferred between partners (operation 823).
+- **Receitas Lançadas Recebidas:** revenue received on behalf of each partner (operation 510).
+
 ## Source → Power BI mapping (legacy files)
 
 | File / sheet | Read by (M query) | Layout reproduced |
@@ -192,4 +250,4 @@ All marts are declared as an [exposure](analytics/models/marts/marts.yml) for th
 
 Docs are generated with `dbt docs generate` and published to GitHub Pages:
 
-**→ 
+**→[jonathasporrino.github.io/construction_site_end_to_end_ETL/](https://jonathasporrino.github.io/construction_site_end_to_end_ETL/)** 

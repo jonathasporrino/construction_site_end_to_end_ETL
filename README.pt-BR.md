@@ -143,6 +143,64 @@ Todos os marts estão declarados como [exposure](analytics/models/marts/marts.ym
 | Contrato | `fct_lancamento` | Nomes, tipos e restrições das colunas verificados no build |
 | SQL singulares | [analytics/tests/](analytics/tests/) | Fato concilia com o ERP (contagem e valores); participações atuais dos sócios somam 100%; última posição mensal bate com o fato na data de corte |
 
+## Dashboard (versão 1)
+
+> **Esta é uma versão inicial e a versão 2 vai melhorá-la.** Construí o relatório com a extensão do Power BI para o VS Code em um Mac, que não consegue processar os dados, então as imagens abaixo são renderizações de layout com **valores de exemplo** (rótulos como `razao_social A`), não números reais. O foco deste projeto é a **modelagem de dados que resolve o problema de negócio**: o pipeline ERP → dbt → esquema estrela descrito acima. A versão 2 vai conectar o relatório aos arquivos Parquet e mostrar números reais.
+
+O relatório lê os marts como arquivos Parquet (modo Import). Cada página responde a uma pergunta de gestão, e o modelo por trás dela é o esquema estrela acima.
+
+### Capa
+
+![Capa](img/capa.png)
+
+Navegação por visão: **Visão Obra** e **Visão Estratégica**. O cartão no canto inferior direito, *Data Emissão da Base*, mostra a data da base, que o modelo original tirava do metadado do arquivo. Entradas como Materiais Adquiridos, Mão de Obra, Equipamentos, Orçamento e Análise de Portfólio ficam planejadas para a versão 2.
+
+### Posição Econômica Efetuada (o que foi recebido e pago)
+
+![Posição Econômica Efetuada](img/posicao_economica_efetuada.png)
+
+- **Filtros:** Gerência, Unidade de Negócio, Obra, Ano e Mês. A unidade de negócio também controla a segurança por linha (`seg_acesso_usuario`).
+- **Quatro gráficos de colunas** abrem as despesas por classe de custo (Mão de Obra, Material, Equipamentos, Serviço Terceirizado), por obra e mês. A classe vem de `dim_conta[categoria_custo]`.
+- **Tabela-resumo:** (+) Receita Acumulada, (−) Despesa Acumulada e Resultado Acum.
+- **Medidor % Físico:** avanço físico da obra (`pct_fisico_executado`), para comparar com o resultado financeiro.
+- **Gráfico combinado:** receita e despesa por mês (colunas) e saldo acumulado (linha).
+- **Gráfico de barras:** despesas por fornecedor, a partir do papel de contraparte da `dim_empresa`.
+
+### Posição Econômica Compromissada (o que ainda falta receber ou pagar)
+
+![Posição Econômica Compromissada](img/posicao_economica_compromissada.png)
+
+Mesmo layout da página anterior, mas sobre `valor_compromissado` (o valor ainda em aberto, coluna `TOTCOMP` do ERP). Acrescenta a **Receita Diferida Acumulada**, que continua compromissada até ser realizada.
+
+### Posição Econômica Acumulada (DRE pela hierarquia de contas)
+
+![Posição Econômica Acumulada](img/posicao_economica_acumulada.png)
+
+Uma matriz que abre de Plano de Contas para Grupo, Subgrupo, Conta e Fornecedor/Cliente (a hierarquia de 3 níveis da `dim_conta`), com **Comp.**, **Efetuado**, **Total acumulado** e **%**. Reproduz o relatório do ERP *3.29 – Demonstrativo Sintético Econômico*, em que Total = Comp. + Efetuado. Os cartões de baixo mostram Saldo Compromissado, Saldo Efetuado, Saldo Total e %Resultado (saldo dividido pela receita total).
+
+### Posição Financeira (fluxo de caixa)
+
+![Posição Financeira](img/posicao_financeira.png)
+
+Uma tabela com entradas e saídas de caixa, efetuadas e compromissadas, mais o fluxo de caixa acumulado, por fornecedor/cliente, histórico, conta e operação. Abaixo: um gráfico mensal de Entrada/Saída/Saldo e o **Top 10 Fornecedores**. Um painel de filtros oculto (fornecedor, histórico, conta, operação, empresa, documento, realizado/em aberto) permite chegar a um único lançamento.
+
+### Posição Societária (sócios)
+
+![Posição Societária](img/posicao_societaria.png)
+
+- **Resumo Societário:** aportes, devoluções e saldo de aportes por sócio.
+- **TAC por Obra e Sócio:** a participação de cada sócio na TAC (`bridge_obra_socio`) e a TAC prevista, paga e a pagar.
+- **Aportes:** aportes por empresa de recebimento/pagamento, expansíveis até cada lançamento.
+- **Transferência Impostos** e **Impostos Lançados nos Custos:** impostos repassados entre sócios e impostos lançados nos custos.
+
+### Posição Societária 2 (INSS e repasses de receita)
+
+![Posição Societária 2](img/posicao_societaria_2.png)
+
+- **INSS Cliente:** INSS retido, INSS consumido e crédito restante por obra.
+- **Transferência de Receita:** receita repassada entre sócios (operação 823).
+- **Receitas Lançadas Recebidas:** receita recebida em nome de cada sócio (operação 510).
+
 ## Mapeamento origem → Power BI (arquivos legados)
 
 | Arquivo / aba | Lido por (consulta M) | Layout reproduzido |
@@ -185,3 +243,7 @@ Todos os marts estão declarados como [exposure](analytics/models/marts/marts.ym
 - Os e-mails de RLS em `acesso_usuario` são fictícios; a lista real de acessos nunca fez parte do projeto original.
 - `is_centro_administrativo` (obras 1/101/120/150) é uma hipótese para o filtro fixo original, não uma regra confirmada.
 - O PBIP original ainda precisa de caminhos novos e de alguns literais renomeados para atualizar com os arquivos legados. Essa lista de ajustes fica privada, fora deste repositório.
+
+## 📖 Documentação
+
+A documentação é gerada com `dbt docs generate` e publicada no GitHub Pages:
