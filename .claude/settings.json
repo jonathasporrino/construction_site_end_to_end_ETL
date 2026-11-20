@@ -8,7 +8,10 @@
       "Read(//Users/jonathasporrino/**)",
       "Bash(.venv/bin/python -)",
       "Bash(../../.venv/bin/python -)",
-      "Bash(grep -v -E 'LocalDate|^\\\\s*$')"
+      "Bash(grep -v -E 'LocalDate|^\\\\s*$')",
+      "mcp__power-viz__get_report_outline",
+      "mcp__power-viz__render_page",
+      "mcp__chrome-devtools__new_page"
     ],
     "additionalDirectories": [
       "/Users/jonathasporrino/Library/CloudStorage/GoogleDrive-jonathas.porrino@gmail.com/Meu Drive/Projetos/Portifolio/Construtora/bases/construtora/construtora_data/analytics/exports/definition/tables"
